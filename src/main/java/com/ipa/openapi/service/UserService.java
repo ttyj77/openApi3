@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    //    private final String NAMESPACE = "mapper.UserMapper";
     private final PasswordEncoder passwordEncoder;
     private UserDao userDao;
 
@@ -18,17 +17,6 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
         this.userDao = userDao;
     }
-
-    private SqlSession session;
-//
-//    public void insert(UserDTO userDTO) {
-//        session.insert(NAMESPACE + ".register", userDTO);
-//    }
-//
-//    public UserDTO auth(UserDTO attempt) {
-//        return session.selectOne(NAMESPACE + ".auth", attempt);
-//    }
-
 
     public void register(UserDTO userDTO) {
         userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
