@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipa.postgersql_test.dao.UserDao">
+    <insert id="register" parameterType="com.ipa.postgersql_test.model.UserDTO">
+        INSERT INTO public."user"(
+        username, password)
+        VALUES (#{username},#{password});
+    </insert>
+    <select id="findByUsername" parameterType="String" resultType="com.ipa.postgersql_test.model.UserDTO">
+        SELECT id, username, password
+        FROM public."user" where username = #{username};
+    </select>
+</mapper>
+
