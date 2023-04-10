@@ -2,15 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.ipa.openapi.dao.UserDao">
-    <insert id="register" parameterType="com.ipa.openapi.model.UserDTO">
-        INSERT INTO public."user"(
-        username, password,role)
-        VALUES (#{username},#{password},#{role});
+<mapper namespace="mapper.UserMapper">
+    <insert id="register" parameterType="userDTO">
+        INSERT INTO user(username, password,role)
+        VALUES (#{username}, #{password},#{role})
     </insert>
-    <select id="findByUsername" parameterType="String" resultType="com.ipa.openapi.model.UserDTO">
-        SELECT id, username, password, role
+    <select id="findByUsername" parameterType="String" resultType="com.ipa.model.UserDTO">
+        SELECT id, username, password,role
         FROM public."user" where username = #{username};
     </select>
 </mapper>

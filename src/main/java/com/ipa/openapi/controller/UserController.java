@@ -18,21 +18,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    public String main(UserDTO userDTO) {
-
-        return "index";
-    }
-
-//    @PostMapping("/user/auth")
-//    public String auth(UserDTO userDTO) {
-//        userService.auth(userDTO);
-//        System.out.println(userDTO);
-//        System.out.println(userDTO.getUsername());
-//
-//        return "main";
-//    }
-
     @GetMapping("/login")
     public String login() {
         return "login";
