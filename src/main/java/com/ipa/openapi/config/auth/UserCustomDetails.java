@@ -1,26 +1,32 @@
-package com.ipa.postgersql_test.config.auth;
+package com.ipa.openapi.config.auth;
 
-import com.ipa.postgersql_test.model.UserDTO;
+import com.ipa.openapi.model.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
-@AllArgsConstructor
+
 public class UserCustomDetails implements UserDetails {
-    private final UserDTO userDTO;
+    private UserDTO userDTO;
+
 
     // 일반 시큐리티 로그인시 사용
-//    public UserCustomDetails(UserDTO userDTO) {
-//        this.userDTO = userDTO;
-//    }
+    public UserCustomDetails(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> list = new ArrayList<>();
+        list.add(new SimpleGrantedAuthority(userDTO.getRole()));
+        return list;
     }
 
     @Override

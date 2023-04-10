@@ -1,7 +1,7 @@
-package com.ipa.postgersql_test.config.auth;
+package com.ipa.openapi.config.auth;
 
-import com.ipa.postgersql_test.model.UserDTO;
-import com.ipa.postgersql_test.service.UserService;
+import com.ipa.openapi.model.UserDTO;
+import com.ipa.openapi.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,13 +19,14 @@ public class UserCustomDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDTO userDTO = userService.findByUsername(username);
-        System.out.println("여기 타나");
         if (userDTO == null) {
             System.out.println("아이디 정보 없음");
             throw new UsernameNotFoundException(username);
         } else {
             System.out.println("로그인 진행");
-            return new UserCustomDetails(userDTO);
+            UserCustomDetails details = new UserCustomDetails(userDTO);
+            System.out.println(details.getUserDTO());
+            return details;
         }
 
     }
