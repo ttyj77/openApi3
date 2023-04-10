@@ -1,5 +1,7 @@
 package com.ipa.openapi.config;
 
+import com.ipa.openapi.handler.UserAuthFailHandler;
+import com.ipa.openapi.handler.UserAuthSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,12 +15,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
+// secured Annotation 활성화 / preAuthorize Annotation 활성화
+// 일반 메소드에 @Secured("ROLE_ADMIN") 단독 설정 가능 => 신버전
+// 일반 메소드에 @PreAuthorize("hasRole('ROLE_USER') or "hasRole('ROLE_ADMIN)") 다중 설정 가능 => 구버전
 @EnableWebSecurity
 public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfiguration) throws Exception {
         return authConfiguration.getAuthenticationManager();
+    }
+    @Bean
+    public AuthenticationSuccessHandler userAuthSuccessHandler() {
+        return new UserAuthSuccessHandler();
+    }
+    @Bean
+    public AuthenticationFailureHandler userAuthFailureHandler() {
+        return new UserAuthFailHandler();
     }
 
     @Bean
@@ -35,10 +48,15 @@ public class SecurityConfig {
                 .requestMatchers("/main").hasRole("ADMIN")
                 .and()
                 .formLogin().defaultSuccessUrl("/").loginPage("/user/login")  // 접근이 차단된 페이지 클릭시 이동할 url
-                .loginProcessingUrl("/login_proc") // 로그인시 맵핑되는 url
+                .loginProcessingUrl("/login-proc") // 로그인시 맵핑되는 url
                 .usernameParameter("username")      // view form 태그 내에 로그인 할 id 에 맵핑되는 name ( form 의 name )
                 .passwordParameter("password")      // view form 태그 내에 로그인 할 password 에 맵핑되는 name ( form 의 name )
 //                .successHandler(successHandlerHandler()) // 로그인 성공시 실행되는 메소드
+                .loginProcessingUrl("/login-proc") // 로그인시 맵핑되는 url
+                .usernameParameter("username")      // view form 태그 내에 로그인 할 id 에 맵핑되는 name ( form 의 name )
+                .passwordParameter("password")      // view form 태그 내에 로그인 할 password 에 맵핑되는 name ( form 의 name )
+                .successHandler(userAuthSuccessHandler()) // 로그인 성공시 실행되는 메소드
+                .failureHandler(userAuthFailureHandler()) // 로그인 실패시 실행되는 메소드
                 .permitAll()
                 .and()
                 .logout() // 로그아웃 설정
