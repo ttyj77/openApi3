@@ -1,6 +1,6 @@
-package com.ipa.postgersql_test.dao;
+package com.ipa.openapi.dao;
 
-import com.ipa.postgersql_test.model.UserDTO;
+import com.ipa.openapi.model.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.dao.DataAccessException;
 
