@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+<<<<<<< HEAD
 ### workspace ###
 *.idea/workspace.xml
 *.class
@@ -39,3 +40,12 @@ build/
 
 ### VS Code ###
 .vscode/
+<<<<<<< HEAD
+=======
+
+### workspace ###
+*.idea/workspace.xml
+*.class
+*.iml
+*.idea
+>>>>>>> 39d6f1eb9c0fe32fac9a211cd877b7a406c4c4e8

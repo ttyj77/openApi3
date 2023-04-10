@@ -2,16 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.UserMapper">
-    <insert id="register" parameterType="userDTO">
-        INSERT INTO user(username, password)
-        VALUES (#{username}, #{password})
+
+<mapper namespace="com.ipa.postgersql_test.dao.UserDao">
+    <insert id="register" parameterType="com.ipa.postgersql_test.model.UserDTO">
+        INSERT INTO public."user"(
+        username, password)
+        VALUES (#{username},#{password});
     </insert>
-    <select id="auth" parameterType="userDTO" resultType="userDTO">
-        SELECT * FROM user
-        WHERE username = #{username}
-        AND
-        password = #{password}
+    <select id="findByUsername" parameterType="String" resultType="com.ipa.postgersql_test.model.UserDTO">
+        SELECT id, username, password
+        FROM public."user" where username = #{username};
+        >>>>>>> 39d6f1eb9c0fe32fac9a211cd877b7a406c4c4e8
     </select>
 </mapper>
 
