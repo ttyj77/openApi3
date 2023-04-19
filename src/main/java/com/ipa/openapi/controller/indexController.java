@@ -30,5 +30,16 @@ public class indexController {
         return "main page";
     }
 
+    @GetMapping("/providerTable")
+    public String table() {
+
+        return "providerTable";
+    }
+
+    @GetMapping("/modal")
+    public String modal(){
+        return "modalTest";
+    }
+
 
 }
