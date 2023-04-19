@@ -31,7 +31,7 @@ public class indexController {
     }
 
     @GetMapping("/providerTable")
-    public String table() {
+    public String table2() {
 
         return "providerTable";
     }
