@@ -24,13 +24,21 @@ public class indexController {
     }
 
     @GetMapping("/providerTable")
-    public String table() {
+    public String providerTable() {
 
-        return "providerTable";
+        return "mdProviderTable";
     }
 
+
+    @GetMapping("/agencyTable")
+    public String mdServiceTable() {
+
+        return "mdAgencyTable";
+    }
+
+
     @GetMapping("/modal")
-    public String modal(){
+    public String modal() {
         return "modalTest";
     }
 
