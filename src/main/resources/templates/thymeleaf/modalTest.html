@@ -3,69 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+
 </head>
 <body>
+<style>
+    .hr {
+        width: 50%;
+
+        height: 50px;
+    }
+
+    .jb-division-line {
+        border-top: 1px solid #444444;
+        margin: 30px 0px;
+    }
+
+
+</style>
 <h1>하하</h1>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 1000px;
-    height: 1000px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">정보제공 API 거래이력</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table">
-          <tbody>
-          <tr>
-            <td>전송요구SEQ</td>
-            <td>TRQ_20211123094515_1725</td>
-          </tr>
-          <tr>
-            <td>기관명:서비스명</td>
-            <td>주식회사 하나은행 : 마이데이터 서비스</td>
-          </tr>
-          <tr>
-            <td>거래고유번호</td>
-            <td>QMBFCK67NULBGK72D1YE1MMYB</td>
-          </tr>
-          <tr>
-            <td>요청헤더</td>
-            <td><textarea rows="8" cols="85">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea></td>
-          </tr>
-          <tr>
-            <td>응답메세지</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>응답데이터</td>
-            <td><textarea rows="8" cols="85">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div th:fragment="appheader">
+    <!--    <button id="demo"> 날짜버튼</button>-->
+    <div class="row" style="align-items: center;">
+        <div class="col-md-1" style="margin-left: 30px; margin-top: 20px">조회 날짜</div>
+        <input class="col-md-2" type="date" placeholder="날짜를 입력해주세요" style="margin: 25px 5px 5px 20px; width: 220px !important;">
     </div>
-  </div>
+    <!--        <div class="row" style="width: 50%; height: 50px; background-color: #bdbdbd">-->
+
+    <!--            <div class="col-md-6">-->
+
+    <!--            </div>-->
+    <!--            <div class="col-md-6" style="align-self: end">-->
+    <!--                <div style="width: 80%; height: 1px; background-color: #e83e8c;">     </div>-->
+
+    <!--            </div>-->
+
+
+    <!--         </div>-->
+
+    <body>
+    <form class="search-container">
+        <input type="text" id="search-bar" placeholder="What can I help you with today?">
+        <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+    </form>
+    </body>
+
 </div>
+
 </body>
-
-
 </html>
