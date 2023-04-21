@@ -1,9 +1,5 @@
 package com.ipa.openapi.controller;
 
-import com.ipa.openapi.config.auth.UserCustomDetails;
-import com.ipa.openapi.model.UserDTO;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,14 +31,19 @@ public class indexController {
     }
 
     @GetMapping("/providerTable")
-    public String table() {
+    public String providerTable() {
 
-        return "providerTable";
+        return "mdProviderTable";
     }
 
     @GetMapping("/modal")
     public String modal(){
         return "modalTest";
+    }
+    @GetMapping("/agencyTable")
+    public String mdServiceTable() {
+
+        return "mdAgencyTable";
     }
 
 
