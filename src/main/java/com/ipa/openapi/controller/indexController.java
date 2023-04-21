@@ -38,7 +38,10 @@ public class indexController {
         return "modalTest";
     }
 
-
+    @GetMapping("accountList")
+    public String accountList(){
+        return "accountList";
+    }
 
 
 }
