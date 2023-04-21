@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <title>INFINITY MANAGER</title>
     <link href="/images/logo_img.png" rel="shortcut icon" type="image/x-icon">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/css/apis.css" rel="stylesheet"/>
-    <script src="https://kit.fontawesome.com/cbcad42a26.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -24,10 +21,11 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <!--            <div class="sidebar-brand-icon rotate-n-15">-->
+            <!--                <i class="fas fa-laugh-wink"></i>-->
+            <!--            </div>-->
+            <!--            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>-->
+            <img src="/images/logo2.png" alt="INFINITY LOGO" style="width: 170px">
         </a>
 
         <!-- Divider -->
@@ -330,9 +328,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                 src="../../../../../../../Desktop/startbootstrap-sb-admin-2-gh-pages/img/undraw_profile.svg">
+                            <i class="fa-solid fa-user fa-bounce"></i>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -368,7 +364,112 @@
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fa-solid fa-plus fa-flip"></i> 서비스 등록</a>
                 </div>
-                <i class="fa-solid fa-user"></i>
+                <div class="row">
+
+                    <!-- Earnings (Monthly) Card Example -->
+
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div onclick="location.href='table'" style="cursor: pointer">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h3 font-weight-bold text-primary mb-1">
+                                                보험업권 (/v1/insu)
+                                            </div>
+                                            <div class="h6 text-dark mb-0">보험 업권 APIs</div>
+                                            <div class="h6 text-dark mb-0">공개</div>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-pen" style="color: #797a7c;"></i>
+                                            </button>
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-trash-can" style="color: #797a7c;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div onclick="location.href='table'" style="cursor: pointer">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h3 font-weight-bold text-primary mb-1">
+                                                은행업권 (/v1/bank)
+                                            </div>
+                                            <div class="h6 text-dark mb-0">은행 업권 APIs</div>
+                                            <div class="h6 text-dark mb-0">공개</div>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-pen" style="color: #797a7c;"></i>
+                                            </button>
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-trash-can" style="color: #797a7c;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div onclick="location.href='table'" style="cursor: pointer">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h3 font-weight-bold text-primary mb-1">
+                                                투자업권 (/v1/invest)
+                                            </div>
+                                            <div class="h6 text-dark mb-0">투자 업권 APIs</div>
+                                            <div class="h6 text-dark mb-0">공개</div>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-pen" style="color: #797a7c;"></i>
+                                            </button>
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-trash-can" style="color: #797a7c;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div onclick="location.href='table'" style="cursor: pointer">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h3 font-weight-bold text-primary mb-1">
+                                                ROOT (/)
+                                            </div>
+                                            <div class="h6 text-dark mb-0">모든 리소스 볼 수 있다.</div>
+                                            <div class="h6 text-dark mb-0">공개</div>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-pen" style="color: #797a7c;"></i>
+                                            </button>
+                                            <button class="btn btn-light btn-jelly" onclick="location.href='#'; event.stopPropagation();">
+                                                <i class="fa-solid fa-trash-can" style="color: #797a7c;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
         </div>
@@ -376,6 +477,23 @@
 
 
 </div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 
 </body>
 </html>
