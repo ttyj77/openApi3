@@ -36,8 +36,16 @@ public class indexController {
         return "mdProviderTable";
     }
 
+
+    @GetMapping("/agencyTable")
+    public String mdServiceTable() {
+
+        return "mdAgencyTable";
+    }
+
+
     @GetMapping("/modal")
-    public String modal(){
+    public String modal() {
         return "modalTest";
     }
     @GetMapping("/agencyTable")
@@ -45,6 +53,8 @@ public class indexController {
 
         return "mdAgencyTable";
     }
+
+
 
 
 }
