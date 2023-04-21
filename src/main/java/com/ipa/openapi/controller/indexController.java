@@ -23,6 +23,11 @@ public class indexController {
         return "apis";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
+
 
     @GetMapping("/main")
     @ResponseBody
@@ -48,11 +53,7 @@ public class indexController {
     public String modal() {
         return "modalTest";
     }
-    @GetMapping("/agencyTable")
-    public String mdServiceTable() {
 
-        return "mdAgencyTable";
-    }
 
 
 
