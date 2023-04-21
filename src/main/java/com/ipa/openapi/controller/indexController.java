@@ -10,7 +10,7 @@ public class indexController {
     @GetMapping("/")
     public String index() {
 //        @AuthenticationPrincipal UserCustomDetails details   로그인 된 사용자 정보 가져옴
-        return "index";
+        return "/fragment/headSideBar";
     }
 
     @GetMapping("/main")

@@ -1,0 +1,31 @@
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--configFragment 선언-->
+<th:block th:fragment="configFragment">
+    <!-- 이 영역에 공통으로 사용할 css, js library를 선언한다. -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}">
+    <link rel="stylesheet" th:href="@{/css/mdTable.css}">
+    <link rel="stylesheet" th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}">
+
+
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap2/js/bootstrap.bundle.min.js}"></script>
+
+    <!--    <script th:src="@{'https://kit.fontawesome.com/24311b556d.js' crossorigin='anonymous'}"></script>-->
+
+
+    <!-- Content Page의 CSS fragment 삽입 -->
+    <th:block layout:fragment="css"></th:block>
+
+    <!-- Content Page의 script fragment 삽입 -->
+    <th:block layout:fragment="script"></th:block>
+
+</th:block>
