@@ -6,14 +6,23 @@
         #search {
             float: right;
         }
-
+        #userInfobutton{
+            margin-bottom: auto;
+            text-align: center;
+        }
+        .btn-primary{
+            display: inline-block;
+        }
         #plus-icon {
             width: 32px;
             height: 32px;
             float: right;
         }
-
+        .changeColor{
+            background-color: grey;
+        }
     </style>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +30,6 @@
     <meta name="author" content="">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>SB Admin 2 - Tables</title>
-
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -264,10 +272,11 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+            <!--메인화면(계정목록)-->
                 <!-- Page Heading -->
                 <div class="row" style="margin-bottom: 5px">
                     <h1 class="h3 mb-2 text-gray-800" style = "margin-left: 12px">계정목록</h1>
+                    <!--정보추가모달-->
                     <svg id="plus-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-plus-square-fill" viewBox="0 0 16 16" data-bs-toggle="modal" style = "margin-left:90%"
                          data-bs-target="#exampleModal">
@@ -329,19 +338,20 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                     </button>
-                                    <form name="modalSubmit" type="button" class="btn btn-primary" onclick=modal()>Save
+                                    <form name="modalSubmit" type="button" class="btn btn-primary" onclick=changeConfirm()>Save
                                         changes
                                     </form>
+                                    <!--정보수정 모달끝!-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     </div>
+                    <!--검색어 입력창-->
                     <div class="card-body">
                         <div id="search" class="col-md-4 input-group"
                              style="margin-top: 5px; font-size: 10px; margin-right: -9px">
@@ -355,8 +365,9 @@
                             </div>
                         </div>
                     </div>
+                    <!--검색어 입력창-->
+                    <!--유저정보테이블 시작-->
                     <div class="card-body">
-
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
@@ -370,62 +381,95 @@
                             </tfoot>
                             <tbody>
                             <tr>
-                                <td>yonghun</td>
-                                <td>최용훈</td>
+                                <td id = "tableid1" data-bs-toggle="modal" data-bs-target="#informationModal">yonghun</td>
+                                <td id = "tablename1" data-bs-toggle="modal" data-bs-target="#informationModal">최용훈</td>
                                 <td>
-                                    <button class="btn btn-danger" id="deactivate1" onclick="button1Click();">비활성화
+                                    <button class="btn btn-danger" id="deactivate1" onclick="deactivate();">비활성화
                                     </button>
-                                    <button class="btn btn-primary" id="activate1" onclick="button1Click();">활성화
+                                    <button class="btn btn-primary" id="activate1" onclick="activate();">활성화
                                     </button>
                                 </td>
+                                <!--삭제 활동 시작-->
                                 <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-eraser-fill" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" onclick = "eraseWarning();"
+                                         class="bi bi-eraser-fill" viewBox="0 0 16 16">
                                         <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
                                     </svg>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>yonghun</td>
-                                <td>최용훈</td>
-                                <td>
-                                    <button class="btn btn-danger" id="deactivate2" onclick="button2Click();">비활성화
-                                    </button>
-                                    <button class="btn btn-primary" id="activate2" onclick="button2Click();">활성화
-                                    </button>
-                                </td>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-eraser-fill" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                                        <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
-                                    </svg>
-
-                                </td>
+                                <!--삭제 활동 끝-->
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="deleteConfirm" id="deleteConfirmbutton">삭제 하시겠습니까?</h5>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                            <button type="button" name = "delete" class="btn btn-danger" onclick = "deleteFunction()">삭제</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
+        <!--유저정보테이블 끝-->
+        <!--유저정보 모달 시작-->
+        <div class="modal" tabindex="-1" id = "informationModal" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-lg" >
+                <div class="modal-content">
+                    <div class="modal-body" >
+                        <div class="card-body" style = "font-size: 13px; white-space: nowrap">
+                            <table class="table table-bordered" id="informationTable" width="100%" cellspacing="0">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th class="tg-0lax">아이디</th>
+                                    <th class="tg-0lax" colspan="2" id = "idSpace">yonghun</th>
+                                    <th class="tg-0lax">이름</th>
+                                    <th class="tg-0lax" colspan="2" id = "nameSpace">최용훈</th>
+                                </tr>
+                                <td class="tg-0lax">전화번호</td>
+                                <td class="tg-0lax" colspan="5" id = "phoneNumberSpace">
+                                    010-1234-5678
+                                </td>
+                                <tr>
+                                    <td class="tg-0lax">이메일</td>
+                                    <td class="tg-0lax" colspan="5" id = "emailSpace">
+                                        yhchoi@inzent.com
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">역할</td>
+                                    <td class="tg-0lax" colspan="5">
+                                        <button type="button" class="btn btn-primary rounded-pill">일반 사용자</button>
+                                        <button type="button" class="btn btn-primary rounded-pill">마이데이터 사업자</button>
+                                        <button type="button" class="btn btn-primary rounded-pill">운영자</button>
+                                        <button type="button" class="btn btn-primary rounded-pill">API 제공자</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">활성화 상태</td>
+                                    <td class="tg-0lax" colspan="5" id = "currentActivation"><div class="form-check">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="activateCheck" id="activate" checked disabled>
+                                            <label class="form-check-label" for="activate" disabled>
+                                                활성화
+                                            </label>
+                                        </div>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">비밀번호 변경</td>
+                                    <td class="tg-0lax" colspan="5" ><button class = "btn btn-primary" id = "passwordChange" disabled >비밀번호 변경</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div id = "userInfobutton">
+                                <button class = "btn btn-primary" onclick = "correction();" id = "correctionButton">수정</button>
+                                <button class = "btn btn-primary" data-bs-dismiss="modal">닫기</button>
+                            </div>
+                        </div>
 
-
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--유저정보 모달 끝-->
     </div>
     <!-- End of Content Wrapper -->
 
@@ -444,7 +488,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close" >
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -475,7 +519,7 @@
 <script src="/js/demo/datatables-demo.js"></script>
 </body>
 <script>
-    function modal() {
+    function changeConfirm() {
         let name = document.getElementById("nameInput");
         let id = document.getElementById("IdInput");
         let password = document.getElementById("password");
@@ -501,21 +545,57 @@
         deleteButton.onClick = swal({
             title: "탈퇴처리 되었습니다",
             icon: 'warning'
-        })
+        });
     }
-    function button1Click(){
-        let activity1=document.getElementById("activate1");
+    function activate(){
+        let activity1=document.getElementById("deactivate1");
         if(activity1.onclick){
-            activity1.style.background = "#808080";
+            activity1.style.background = "#0d6efd";
             activity1.textContent = "활성화"
         }
         }
-    function button2Click(){
-        let activity2=document.getElementById("activate2");
+    function deactivate(){
+        let activity2=document.getElementById("activate1");
         if(activity2.onclick){
-            activity2.style.background = "#808080";
-            activity2.textContent = "활성화"
+            activity2.style.background = "#e23137";
+            activity2.textContent = "비활성화"
         }
     }
+$(document).ready(function(){
+    changeColor();
+})
+    function changeColor(){
+        $('#dataTable tr').mouseover(function(){
+            $(this).addClass('changeColor');
+        }).mouseout(function() {
+            $(this).removeClass('changeColor');
+        });
+    }
+
+    function eraseWarning(){
+        swal({
+            title: "삭제하시겠습니까?",
+            text: "이 작업은 되돌릴수 없습니다!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("삭제되었습니다.", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("취소되었습니다.");
+                }
+            });
+    }
+function correction(){
+    $('#activate').attr("disabled", false);
+    $('#deactivate').attr("disabled", false);
+    $('#passwordChange').attr("disabled", false);
+
+    $('#correctionButton').textContent = "저장";
+}
 </script>
 </html>
