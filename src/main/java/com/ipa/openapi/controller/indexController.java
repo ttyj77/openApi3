@@ -43,8 +43,12 @@ public class indexController {
         return "accountList";
     }
 
-    @GetMapping("authorization")
+    @GetMapping("requestPage")
     public String Authorization(){
+        return "requestPage";
+    }
+    @GetMapping("authorization")
+    public String authorization(){
         return "authorization";
     }
 }

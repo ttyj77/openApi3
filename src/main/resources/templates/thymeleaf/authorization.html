@@ -7,15 +7,12 @@
             float: right;
         }
 
-
-        #closeButton {
-            width: fit-content;
+        #userInfobutton {
             margin-bottom: auto;
             text-align: center;
         }
 
         .btn-primary {
-            margin: auto;
             display: inline-block;
         }
 
@@ -26,9 +23,14 @@
         }
 
         .changeColor {
-            background-color: grey;
+            background-color: lightgrey;
+        }
+
+        .datatable-dropdown {
+            float: right;
         }
     </style>
+
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +38,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>authorization</title>
+    <title>accountList</title>
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -63,8 +65,10 @@
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
+
         <!-- Main Content -->
         <div id="content">
+
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -85,6 +89,7 @@
                             <button class="btn btn-primary" type="button">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
+
                         </div>
                     </div>
                 </form>
@@ -271,15 +276,21 @@
                     </li>
                 </ul>
             </nav>
-
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <!--메인 화면(계정목록)-->
+                <!--메인화면(계정목록)-->
                 <!-- Page Heading -->
                 <div class="row" style="margin-bottom: 5px">
-                    <h1 class="h3 mb-2 text-gray-800" style="margin-left: 12px">요청목록</h1>
+                    <h1 class="h3 mb-2 text-gray-800" style="margin-left: 12px">권한관리</h1>
+                    <!--권한 추가 모달-->
+                    <svg id="plus-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-plus-square-fill" viewBox="0 0 16 16" data-bs-toggle="modal"
+                         style="margin-left:90%"
+                         data-bs-target="#exampleModal">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                    </svg>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">
@@ -292,55 +303,33 @@
                                 <div class="modal-body">
                                     <div>
                                         <div class="mb-3">
-                                            <label for="IdInput" class="form-label">아이디</label>
-                                            <input type="text" class="form-control" id="IdInput" name="id"
-                                                   placeholder="example11">
+                                            <label for="authCode" class="form-label">CODE</label>
+                                            <input type="text" class="form-control" id="authCode" name="code"
+                                                   placeholder="auth">
                                         </div>
                                     </div>
                                     <div>
                                         <div class="mb-3">
-                                            <label for="nameInput" class="form-label">이름</label>
-                                            <input type="text" class="form-control" id="nameInput" name="name"
-                                                   placeholder="홍길동">
+                                            <label for="authName" class="form-label">이름</label>
+                                            <input type="text" class="form-control" id="authName" name="name"
+                                                   placeholder="관리자">
                                         </div>
                                     </div>
                                     <div>
                                         <div class="mb-3">
-                                            <label for="phonenumber" class="form-label">전화번호</label>
-                                            <input type="text" class="form-control" id="phonenumber" name="phonenumber"
-                                                   placeholder="010-1234-5678">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">비밀번호</label>
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                   placeholder="비밀번호">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="passwordCertification" class="form-label">비밀번호 확인</label>
-                                            <input type="password" class="form-control" name="certifi"
-                                                   id="passwordCertification" placeholder="확인">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="emailInput" class="form-label">이메일</label>
-                                            <input type="email" class="form-control" name="email" id="emailInput"
-                                                   placeholder="name@example.com">
+                                            <label for="authDesc" class="form-label">설명</label>
+                                            <input type="text" class="form-control" id="authDesc" name="description"
+                                                   placeholder="이 권한은 관리자 입니다.">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
                                     </button>
                                     <form name="modalSubmit" type="button" class="btn btn-primary"
-                                          onclick=changeConfirm()>Save
-                                        changes
+                                          onclick=changeConfirm()>저장
                                     </form>
-                                    <!--정보수정 모달끝!-->
+                                    <!--권한 추가 모달끝-->
                                 </div>
                             </div>
                         </div>
@@ -348,7 +337,7 @@
                 </div>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary"></h6>
+                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                     </div>
                     <!--검색어 입력창-->
                     <div class="card-body">
@@ -365,138 +354,197 @@
                         </div>
                     </div>
                     <!--검색어 입력창-->
-                    <!--유저 정보 테이블 시작-->
+                    <!--유저정보테이블 시작-->
                     <div class="card-body">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+                               onmouseenter="changeColor()">
                             <thead>
                             <tr>
-                                <th>요청</th>
-                                <th>제목</th>
-                                <th>내용</th>
-                                <th>요청 계정</th>
-                                <th>요청 상태</th>
-                                <th>요청 날짜</th>
-                                <th>응답 날짜</th>
+                                <th>CODE</th>
+                                <th>이름</th>
                                 <th>비고</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            </tfoot>
                             <tbody>
-                            <tr>
-                                <!--요청-->
-                                <td id="requestNumber" data-bs-toggle="modal" data-bs-target="#requestDetailModal">14
-                                </td>
-                                <!--제목-->
-                                <td id="requestTitle" data-bs-toggle="modal" data-bs-target="#requestDetailModal">리소스 권한
-                                    요청[앱 아이디: 19]
-                                </td>
-                                <!--내용-->
-                                <td id="requestContents" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                    앱 아이디: 109, 앱 이름: 123, 리소스: ,아이디:68, URI:/v1/invest/account
-                                </td>
-                                <!--요청 계정-->
-                                <td id="requestAccount" data-bs-toggle="modal" data-bs-target="#requestDetailModal">u1
-                                </td>
-                                <!--요청 상태-->
-                                <td id="requestStatus" data-bs-toggle="modal" data-bs-target="#requestDetailModal">승인
-                                </td>
-                                <!--요청 날짜-->
-                                <td id="requestDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                    2023-04-18
-                                </td>
-                                <!--응답날짜-->
-                                <td id="responseDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                    2023-04-18
-                                </td>
-                                <!--비고(삭제)-->
-                                <td id="requestDeletion">
+                            <tr class="" data-bs-toggle="modal" data-bs-target="#adminAuthModal">
+                                <td class="text-start">ADMIN</td>
+                                <td class="text-start">운영자</td>
+                                <td class="text-start">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          onclick="eraseWarning();"
                                          class="bi bi-eraser-fill" viewBox="0 0 16 16">
                                         <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
                                     </svg>
-                                </td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        </div>
-        <!-- End of Main Content -->
-        <!--유저정보테이블 끝-->
-        <!--유저정보 모달 시작-->
-        <div class="modal" tabindex="-1" id="requestDetailModal" >
-            <div class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="card-body" style="font-size: 13px; white-space: nowrap">
-                            <table class="table table-bordered" id="informationTable" width="100%" cellspacing="0">
-                                <thead>
-                                </thead>
-                                <tbody data-v-3b1040d2="">
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="" width="20%; font-size:1rem;">요청 번호</th>
-                                    <td data-v-3b1040d2="" colspan="3"> 14</td>
-                                </tr>
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="">요청 구분</th>
-                                    <td data-v-3b1040d2=""> 리소스 권한 요청</td>
-                                    <th data-v-3b1040d2="">해당 아이디</th>
-                                    <td data-v-3b1040d2=""> 109</td>
-                                </tr>
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="">요청 계정</th>
-                                    <td data-v-3b1040d2=""> u1</td>
-                                    <th data-v-3b1040d2="">요청 날짜</th>
-                                    <td data-v-3b1040d2=""> 2023-04-18</td>
-                                </tr>
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="">요청 상태</th>
-                                    <td data-v-3b1040d2=""> 승인</td>
-                                    <th data-v-3b1040d2="">처리 결과</th>
-                                    <td data-v-3b1040d2=""> 성공</td>
-                                </tr>
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="">처리 계정</th>
-                                    <td data-v-3b1040d2=""> mydata</td>
-                                    <th data-v-3b1040d2="">처리 날짜</th>
-                                    <td data-v-3b1040d2=""> 2023-04-18</td>
-                                </tr>
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="">제목</th>
-                                    <td data-v-3b1040d2="" colspan="3"> 리소스 권한 요청 [앱 아이디: 109]</td>
-                                </tr>
-                                <tr data-v-3b1040d2="">
-                                    <th data-v-3b1040d2="">내용</th>
-                                    <td data-v-3b1040d2="" colspan="3">
-                                        <div data-v-3b1040d2="" class="v-card v-card--flat v-sheet theme--light"
-                                             style="min-height: 100px;"> 앱 아이디 : 109
-                                            앱 이름 : 123
-                                            리소스 :
-                                            아이디: 68, URI:/v1/invest/accounts
-                                            아이디: 69, URI:/v1/invest/accounts/transactions
+                            <div class="modal" id="adminAuthModal" tabindex="-1">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="adminAuthTitle">Modal title</h5>
                                         </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="input-group-append" id="requestModalclose">
-                                <button class="btn btn-primary" type="button" id="closeButton" data-bs-dismiss="modal">
-                                    닫기
-                                </button>
+                                        <div class="modal-body">
+                                            <div class="form-check">
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="adminAuthCheck" checked disabled>
+                                                <label class="form-check-label" for="adminAuthCheck">
+                                                    권한1
+                                                </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    닫기
+                                                </button>
+                                                <button type="button" class="btn btn-primary"
+                                                        onclick="adminAuthCorrection()">수정
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <tr class="" data-bs-toggle="modal" data-bs-target="#commonAuthModal">
+                                <td class="text-start">COMMON</td>
+                                <td class="text-start">일반사용자</td>
+                                <td class="text-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         onclick="eraseWarning();"
+                                         class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                        <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                                    </svg>
+                            </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="commonAuthModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="AdminAuthTitle">권한 관리</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-check">
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="commonAuthCheck" checked disabled>
+                                                <label class="form-check-label" for="commonAuthCheck">
+                                                    권한1
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                닫기
+                                            </button>
+                                            <button type="button" class="btn btn-primary"
+                                                    onclick="commonAuthCorrection()">
+                                                수정
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <tr class="" data-bs-toggle="modal" data-bs-target="#providerAuthModal">
+                                <td class="text-start">PROVIDER</td>
+                                <td class="text-start">API제공자</td>
+                                <td class="text-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         onclick="eraseWarning();"
+                                         class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                        <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                                    </svg>
+                            </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="providerAuthModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="providerAuthTitle">Modal title</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-check">
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="providerAuthCheck" checked disabled>
+                                                <label class="form-check-label" for="providerAuthCheck">
+                                                    권한1
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                닫기
+                                            </button>
+                                            <button type="button" class="btn btn-primary"
+                                                    onclick="providerAuthCorrection()">
+                                                수정
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <tr class="" data-bs-toggle="modal" data-bs-target="#mydataAuthModal">
+                                <td class="text-start">MYDATA</td>
+                                <td class="text-start">마이데이터 사업자</td>
+                                <td class="text-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         onclick="eraseWarning();"
+                                         class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                        <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                                    </svg>
+                            </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="mydataAuthModal" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="mydataAuthTitle">Modal title</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="mydataAuthCheck" checked disabled>
+                                                <label class="form-check-label" for="mydataAuthCheck">
+                                                    권한1
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                닫기
+                                            </button>
+                                            <button type="button" class="btn btn-primary"
+                                                    onclick="mydataAuthCorrection()">
+                                                수정
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </tbody><!-- /.container-fluid -->
+                        </table>
+
+                        <div class="datatable-dropdown" id="tableDropdown">
+                            <label>
+                                <select class="datatable-selector">
+                                    <option value="5">5</option>
+                                    <option value="10" selected="">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select> entries per page
+                            </label>
                         </div>
                     </div>
                 </div>
-                <!--유저정보 모달 끝-->
             </div>
-            <!-- End of Content Wrapper -->
         </div>
-        <!-- End of Page Wrapper -->
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
@@ -511,10 +559,11 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                    </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="login.html">Logout</a>
@@ -523,41 +572,95 @@
             </div>
         </div>
     </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="/vendor/jquery/jquery.min.js"></script>
-        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="/js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <!--<script src="/vendor/datatables/jquery.dataTables.min.js"></script>-->
-        <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level plugins -->
+<!--<script src="/vendor/datatables/jquery.dataTables.min.js"></script>-->
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="/js/demo/datatables-demo.js"></script>
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>
 <script>
-  function eraseWarning(){
-    swal({
-      title: "삭제하시겠습니까?",
-      text: "이 작업은 되돌릴수 없습니다!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
+    function eraseWarning() {
+        swal({
+            title: "삭제하시겠습니까?",
+            text: "이 작업은 되돌릴수 없습니다!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
             .then((willDelete) => {
-              if (willDelete) {
-                swal("삭제되었습니다.", {
-                  icon: "success",
-                });
-              } else {
-                swal("취소되었습니다.");
-              }
+                if (willDelete) {
+                    swal("삭제되었습니다.", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("취소되었습니다.");
+                }
             });
-  }
+    }
+
+    function changeColor() {
+        $('#dataTable tbody tr').mouseover(function () {
+            $(this).addClass('changeColor');
+        }).mouseout(function () {
+            $(this).removeClass('changeColor');
+        })
+    }
+
+    function changeConfirm() {
+        let name = document.querySelector("#authName");
+        let description = document.querySelector("#authDesc");
+        let code = document.querySelector("#authCode");
+
+        if (name.value === '' || code.value === '') {
+            swal({
+                title: "권한 추가 처리에 실패하였습니다.",
+                text: "다시 입력해주세요.",
+                icon: "error"
+            });
+        } else if (description.value === '') {
+            swal({
+                title: "아무런 설명이 추가되지 않았습니다, 그래도 추가하시겠습니까?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("추가되었습니다.", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("취소되었습니다.");
+                    }
+                });
+        }
+    }
+
+    function mydataAuthCorrection() {
+        $('#mydataAuthCheck').attr("disabled", false);
+    }
+
+    function adminAuthCorrection() {
+        $('#adminAuthCheck').attr("disabled", false);
+    }
+
+    function commonAuthCorrection() {
+    }
+
+    function providerAuthCorrection() {
+        $('#providerAuthCheck').attr("disabled", false);
+    }
 </script>
 </body>
 </html>

@@ -6,22 +6,28 @@
         #search {
             float: right;
         }
-        #userInfobutton{
+
+
+        #closeButton {
+            width: fit-content;
             margin-bottom: auto;
             text-align: center;
         }
-        .btn-primary{
+
+        .btn-primary {
+            margin: auto;
             display: inline-block;
         }
+
         #plus-icon {
             width: 32px;
             height: 32px;
             float: right;
         }
-        .changeColor{
+
+        .changeColor {
             background-color: lightgrey;
         }
-
     </style>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8">
@@ -30,7 +36,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>accountList</title>
+    <title>authorization</title>
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -57,10 +63,8 @@
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
         <!-- Main Content -->
         <div id="content">
-
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -265,99 +269,30 @@
                             </a>
                         </div>
                     </li>
-
                 </ul>
-
             </nav>
+
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-            <!--메인화면(계정목록)-->
+                <!--메인 화면(계정목록)-->
                 <!-- Page Heading -->
+                <div>
                 <div class="row" style="margin-bottom: 5px">
-                    <h1 class="h3 mb-2 text-gray-800" style = "margin-left: 12px">계정목록</h1>
-                    <!--정보추가모달-->
-                    <svg id="plus-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-plus-square-fill" viewBox="0 0 16 16" data-bs-toggle="modal" style = "margin-left:90%"
-                         data-bs-target="#exampleModal">
-                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-                    </svg>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">정보 입력</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="IdInput" class="form-label">CODE</label>
-                                            <input type="text" class="form-control" id="IdInput" name = "id"
-                                                   placeholder="example11">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="nameInput" class="form-label">이름</label>
-                                            <input type="text" class="form-control" id="nameInput" name = "name"
-                                                   placeholder="홍길동">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="phonenumber" class="form-label">전화번호</label>
-                                            <input type="text" class="form-control" id="phonenumber" name = "phonenumber"
-                                                   placeholder="010-1234-5678">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">비밀번호</label>
-                                            <input type="password" class="form-control" id="password" name = "password"
-                                                   placeholder="비밀번호">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="passwordCertification" class="form-label">비밀번호 확인</label>
-                                            <input type="password" class="form-control" name = "certifi"
-                                                   id="passwordCertification" placeholder="확인">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="emailInput" class="form-label">이메일</label>
-                                            <input type="email" class="form-control" name = "email" id="emailInput"
-                                                   placeholder="name@example.com">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <form name="modalSubmit" type="button" class="btn btn-primary" onclick=changeConfirm()>Save
-                                        changes
-                                    </form>
-                                    <!--정보수정 모달끝!-->
-                                </div>
-                            </div>
-                        </div>
+                    <h1 class="h3 mb-2 text-gray-800" style="margin-left: 12px">요청목록</h1>
                     </div>
                 </div>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"></h6>
                     </div>
                     <!--검색어 입력창-->
                     <div class="card-body">
                         <div id="search" class="col-md-4 input-group"
                              style="margin-top: 5px; font-size: 10px; margin-right: -9px">
                             <input type="text" class="form-control"
-                                   placeholder="검색어를 입력해주세요(ID, 이름)"
+                                   placeholder="검색어를 입력해주세요"
                                    aria-label="Search" aria-describedby="basic-addon2"><br>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button" style=" margin-top: 5px; height: 38px;">
@@ -367,14 +302,18 @@
                         </div>
                     </div>
                     <!--검색어 입력창-->
-                    <!--유저정보테이블 시작-->
+                    <!--요청 정보 테이블 시작-->
                     <div class="card-body">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" onmouseenter="changeColor()">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>이름</th>
-                                <th>활성화</th>
+                                <th>요청</th>
+                                <th>제목</th>
+                                <th>내용</th>
+                                <th>요청 계정</th>
+                                <th>요청 상태</th>
+                                <th>요청 날짜</th>
+                                <th>응답 날짜</th>
                                 <th>비고</th>
                             </tr>
                             </thead>
@@ -382,219 +321,186 @@
                             </tfoot>
                             <tbody>
                             <tr>
-                                <td id = "tableid1" data-bs-toggle="modal" data-bs-target="#informationModal">yonghun</td>
-                                <td id = "tablename1" data-bs-toggle="modal" data-bs-target="#informationModal">최용훈</td>
-                                <td>
-                                    <button class="btn btn-danger" id="deactivate1" onclick="deactivate();">비활성화
-                                    </button>
-                                    <button class="btn btn-primary" id="activate1" onclick="activate();">활성화
-                                    </button>
+                                <!--요청-->
+                                <td id="requestNumber" data-bs-toggle="modal" data-bs-target="#requestDetailModal">14
                                 </td>
-                                <!--삭제 활동 시작-->
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" onclick = "eraseWarning();"
+                                <!--제목-->
+                                <td id="requestTitle" data-bs-toggle="modal" data-bs-target="#requestDetailModal">리소스 권한
+                                    요청[앱 아이디: 19]
+                                </td>
+                                <!--내용-->
+                                <td id="requestContents" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                    앱 아이디: 109, 앱 이름: 123, 리소스: ,아이디:68, URI:/v1/invest/account
+                                </td>
+                                <!--요청 계정-->
+                                <td id="requestAccount" data-bs-toggle="modal" data-bs-target="#requestDetailModal">u1
+                                </td>
+                                <!--요청 상태-->
+                                <td id="requestStatus" data-bs-toggle="modal" data-bs-target="#requestDetailModal">승인
+                                </td>
+                                <!--요청 날짜-->
+                                <td id="requestDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                    2023-04-18
+                                </td>
+                                <!--응답날짜-->
+                                <td id="responseDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                    2023-04-18
+                                </td>
+                                <!--비고(삭제)-->
+                                <td id="requestDeletion">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         onclick="eraseWarning();"
                                          class="bi bi-eraser-fill" viewBox="0 0 16 16">
                                         <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
                                     </svg>
                                 </td>
-                                <!--삭제 활동 끝-->
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- /.container-fluid -->
         </div>
+    </div>
         <!-- End of Main Content -->
-        <!--유저정보테이블 끝-->
-        <!--유저정보 모달 시작-->
-        <div class="modal" tabindex="-1" id = "informationModal" data-bs-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered modal-lg" >
+        <!--요청정보 테이블 끝-->
+        <!--요청정보 모달 시작-->
+        <div class="modal" tabindex="-1" id="requestDetailModal" >
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
-                    <div class="modal-body" >
-                        <div class="card-body" style = "font-size: 13px; white-space: nowrap">
-                            <table class="table table-bordered" id="informationTable" width="100%" cellspacing="0">
+                    <div class="modal-body">
+                        <div class="card-body" style="font-size: 13px; white-space: nowrap">
+                            <table class="table table-bordered" id="informationTable" width="100%" cellspacing="0" onmouseenter="changeColor()">
                                 <thead>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <th class="tg-0lax">아이디</th>
-                                    <th class="tg-0lax" colspan="2" id = "idSpace">yonghun</th>
-                                    <th class="tg-0lax">이름</th>
-                                    <th class="tg-0lax" colspan="2" id = "nameSpace">최용훈</th>
+                                <tbody data-v-3b1040d2="">
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="" width="20%; font-size:1rem;">요청 번호</th>
+                                    <td data-v-3b1040d2="" colspan="3"> 14</td>
                                 </tr>
-                                <td class="tg-0lax">전화번호</td>
-                                <td class="tg-0lax" colspan="5" id = "phoneNumberSpace">
-                                    010-1234-5678
-                                </td>
-                                <tr>
-                                    <td class="tg-0lax">이메일</td>
-                                    <td class="tg-0lax" colspan="5" id = "emailSpace">
-                                        yhchoi@inzent.com
-                                    </td>
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="">요청 구분</th>
+                                    <td data-v-3b1040d2=""> 리소스 권한 요청</td>
+                                    <th data-v-3b1040d2="">해당 아이디</th>
+                                    <td data-v-3b1040d2=""> 109</td>
                                 </tr>
-                                <tr>
-                                    <td class="tg-0lax">역할</td>
-                                    <td class="tg-0lax" colspan="5">
-                                        <button type="button" class="btn btn-primary rounded-pill">일반 사용자</button>
-                                        <button type="button" class="btn btn-primary rounded-pill">마이데이터 사업자</button>
-                                        <button type="button" class="btn btn-primary rounded-pill">운영자</button>
-                                        <button type="button" class="btn btn-primary rounded-pill">API 제공자</button>
-                                    </td>
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="">요청 계정</th>
+                                    <td data-v-3b1040d2=""> u1</td>
+                                    <th data-v-3b1040d2="">요청 날짜</th>
+                                    <td data-v-3b1040d2=""> 2023-04-18</td>
                                 </tr>
-                                <tr>
-                                    <td class="tg-0lax">활성화 상태</td>
-                                    <td class="tg-0lax" colspan="5" id = "currentActivation"><div class="form-check">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="activateCheck" id="activate" checked disabled>
-                                            <label class="form-check-label" for="activate" disabled>
-                                                활성화
-                                            </label>
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="">요청 상태</th>
+                                    <td data-v-3b1040d2=""> 승인</td>
+                                    <th data-v-3b1040d2="">처리 결과</th>
+                                    <td data-v-3b1040d2=""> 성공</td>
+                                </tr>
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="">처리 계정</th>
+                                    <td data-v-3b1040d2=""> mydata</td>
+                                    <th data-v-3b1040d2="">처리 날짜</th>
+                                    <td data-v-3b1040d2=""> 2023-04-18</td>
+                                </tr>
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="">제목</th>
+                                    <td data-v-3b1040d2="" colspan="3"> 리소스 권한 요청 [앱 아이디: 109]</td>
+                                </tr>
+                                <tr data-v-3b1040d2="">
+                                    <th data-v-3b1040d2="">내용</th>
+                                    <td data-v-3b1040d2="" colspan="3">
+                                        <div data-v-3b1040d2="" class="v-card v-card--flat v-sheet theme--light"
+                                             style="min-height: 100px;"> 앱 아이디 : 109
+                                            앱 이름 : 123
+                                            리소스 :
+                                            아이디: 68, URI:/v1/invest/accounts
+                                            아이디: 69, URI:/v1/invest/accounts/transactions
                                         </div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                    <td class="tg-0lax">비밀번호 변경</td>
-                                    <td class="tg-0lax" colspan="5" ><button class = "btn btn-primary" id = "passwordChange" disabled >비밀번호 변경</button></td>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <div id = "userInfobutton">
-                                <button class = "btn btn-primary" onclick = "correction();" id = "correctionButton">수정</button>
-                                <button class = "btn btn-primary" data-bs-dismiss="modal">닫기</button>
+                            <div class="input-group-append" id="requestModalclose">
+                                <button class="btn btn-primary" type="button" id="closeButton" data-bs-dismiss="modal">
+                                    닫기
+                                </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <!--유저정보 모달 끝-->
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
 
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--유저정보 모달 끝-->
     </div>
-    <!-- End of Content Wrapper -->
+        <!-- Bootstrap core JavaScript-->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-</div>
-<!-- End of Page Wrapper -->
+        <!-- Core plugin JavaScript-->
+        <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+        <!-- Custom scripts for all pages-->
+        <script src="/js/sb-admin-2.min.js"></script>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close" >
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+        <!-- Page level plugins -->
+        <!--<script src="/vendor/datatables/jquery.dataTables.min.js"></script>-->
+        <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="/js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<!--<script src="/vendor/datatables/jquery.dataTables.min.js"></script>-->
-<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="/js/demo/datatables-demo.js"></script>
-</body>
+        <!-- Page level custom scripts -->
+        <script src="/js/demo/datatables-demo.js"></script>
 <script>
-    function changeConfirm() {
-        let name = document.getElementById("nameInput");
-        let id = document.getElementById("IdInput");
-        let password = document.getElementById("password");
-        let certification = document.getElementById("passwordCertification");
-        let email = document.getElementById("emailInput");
-        let phone = document.getElementById("phonenumber");
-
-        if (name.value === '' || id.value === '' || password.value === '' || certification.value === '' || email.value === '' || phone.value === '') {
-            swal({
-                title: "회원가입 처리에 실패하였습니다.",
-                text: "다시 입력해주세요.",
-                icon: "error"
-            });
-        } else {
-            swal({
-                title: "회원가입 처리에 성공하였습니다!",
-                icon: "success"
-            });
-        }
-    }
-    function deleteFunction(){
-        let deleteButton=document.getElementById("deleteConfirmbutton");
-        deleteButton.onClick = swal({
-            title: "탈퇴처리 되었습니다",
-            icon: 'warning'
-        });
-    }
-    function activate(){
-        let activity1=document.getElementById("deactivate1");
-        if(activity1.onclick){
-            activity1.style.background = "#0d6efd";
-            activity1.textContent = "활성화"
-        }
-        }
-    function deactivate(){
-        let activity2=document.getElementById("activate1");
-        if(activity2.onclick){
-            activity2.style.background = "#e23137";
-            activity2.textContent = "비활성화"
-        }
-}
-
-    function changeColor(){
-        $('#dataTable tbody tr').mouseover(function(){
-            $(this).addClass('changeColor');
-        }).mouseout(function() {
-            $(this).removeClass('changeColor');
-        });
-    }
-
-    function eraseWarning(){
-        swal({
-            title: "삭제하시겠습니까?",
-            text: "이 작업은 되돌릴수 없습니다!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
+  function eraseWarning(){
+    swal({
+      title: "삭제하시겠습니까?",
+      text: "이 작업은 되돌릴수 없습니다!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
             .then((willDelete) => {
-                if (willDelete) {
-                    swal("삭제되었습니다.", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("취소되었습니다.");
-                }
+              if (willDelete) {
+                swal("삭제되었습니다.", {
+                  icon: "success",
+                });
+              } else {
+                swal("취소되었습니다.");
+              }
             });
-    }
-function correction(){
-    $('#activate').attr("disabled", false);
-    $('#deactivate').attr("disabled", false);
-    $('#passwordChange').attr("disabled", false);
-
-    $('#correctionButton').textContent = "저장";
-}
+  }
+  function changeColor(){
+      $('#dataTable tbody tr').mouseover(function(){
+          $(this).addClass('changeColor');
+      }).mouseout(function() {
+          $(this).removeClass('changeColor');
+      });
+  }
 </script>
+</body>
 </html>
