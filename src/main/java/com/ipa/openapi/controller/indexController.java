@@ -43,5 +43,8 @@ public class indexController {
         return "accountList";
     }
 
-
+    @GetMapping("authorization")
+    public String Authorization(){
+        return "authorization";
+    }
 }
