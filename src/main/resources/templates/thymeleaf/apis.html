@@ -384,15 +384,15 @@
                                         <table class="table table-hover">
                                             <tbody>
                                             <tr>
-                                                <td>컨텍스트📍</td>
-                                                <td><input type="text" class="form-control" value="/" required></td>
+                                                <td class="tdbg">컨텍스트📍</td>
+                                                <td><input type="text" class="form-control contextApi" value="/" required></td>
                                             </tr>
                                             <tr>
-                                                <td>이름📍</td>
-                                                <td><input type="text" class="form-control" required></td>
+                                                <td class="tdbg">이름📍</td>
+                                                <td><input type="text" class="form-control nameApi" required></td>
                                             </tr>
                                             <tr>
-                                                <td>공개여부📍</td>
+                                                <td class="tdbg">공개여부📍</td>
                                                 <td class="d-flex">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
@@ -413,7 +413,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>역할</td>
+                                                <td class="tdbg">역할</td>
                                                 <td>
                                                     <div>
                                                     </div>
@@ -427,7 +427,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>설명</td>
+                                                <td class="tdbg">설명</td>
                                                 <td><textarea class="form-control"></textarea></td>
                                             </tr>
                                             </tbody>
@@ -436,7 +436,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                    <button type="submit" class="btn btn-primary">저장</button>
+                                    <button type="submit" class="btn btn-primary" onclick="saveApi()">저장</button>
                                 </div>
                             </div>
                         </div>
@@ -462,6 +462,8 @@
                                             <button class="btn btn-light inBtn" data-bs-toggle="modal"
                                                     data-bs-target="#updateModal"
                                             >
+<!--                                            <button class="btn btn-light inBtn" onclick="event.stopPropagation(); $('#updateModal').modal('show');"-->
+<!--                                            >-->
                                                 <i class="fa-solid fa-pen" style="color: #797a7c;"></i>
                                             </button>
                                             <button class="btn btn-light inBtn"
@@ -486,17 +488,17 @@
                                                             <table class="table table-hover">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td>컨텍스트📍</td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td class="tdbg">컨텍스트📍</td>
+                                                                    <td><input type="text" class="form-control contextApi"
                                                                                value="/v1/insu" required></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>이름📍</td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td class="tdbg">이름📍</td>
+                                                                    <td><input type="text" class="form-control nameApi"
                                                                                value="보험업권" required></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>공개여부📍</td>
+                                                                    <td class="tdbg">공개여부📍</td>
                                                                     <td class="d-flex">
                                                                         <div class="form-check">
                                                                             <input class="form-check-input" type="radio"
@@ -519,11 +521,11 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>소유자📍</td>
+                                                                    <td class="tdbg">소유자📍</td>
                                                                     <td>admin</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>역할</td>
+                                                                    <td class="tdbg">역할</td>
                                                                     <td class="d-flex">
                                                                         <div id="target">
                                                                         </div>
@@ -537,7 +539,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>설명</td>
+                                                                    <td class="tdbg">설명</td>
                                                                     <td><textarea class="form-control">보험업권</textarea>
                                                                     </td>
                                                                 </tr>
@@ -549,7 +551,7 @@
                                                         <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">취소
                                                         </button>
-                                                        <button type="submit" class="btn btn-primary">저장</button>
+                                                        <button type="submit" class="btn btn-primary" onclick="saveApi()">저장</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -700,6 +702,25 @@
         e.preventDefault();
         location.href = 'table';
     });
+
+    function saveApi() {
+        let context = document.querySelector('.contextApi');
+        let name = document.querySelector('.nameApi');
+        if (name.value === '' || context.value === '') {
+            Swal.fire({
+                icon: 'error',
+                text: '필수 입력값을 입력해주세요.'
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                text: 'API 그룹이 저장되었습니다.'
+            }).then(()=>{
+                $('#updateModal').modal('hide');
+                $('#registerModal').modal('hide');
+            });
+        }
+    }
 
     function removeApi() {
         Swal.fire({
