@@ -13,6 +13,28 @@ public class indexController {
         return "index";
     }
 
+    @GetMapping("/table")
+    public String table() {
+        return "tables";
+    }
+
+    @GetMapping("/apis")
+    public String apis() {
+        return "apis";
+    }
+
+
+    @GetMapping("/headSideBar")
+    public String apisTest() {
+        return "/fragment/headSideBar";
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
+
+
     @GetMapping("/main")
     @ResponseBody
     public String main() {
