@@ -23,6 +23,12 @@ public class indexController {
         return "apis";
     }
 
+
+    @GetMapping("/headSideBar")
+    public String apisTest() {
+        return "/fragment/headSideBar";
+    }
+
     @GetMapping("/test")
     public String test() {
         return "test";

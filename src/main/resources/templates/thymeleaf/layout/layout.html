@@ -8,19 +8,37 @@
     <meta charset="UTF-8"/>
     <title>Bamdule</title>
 
-    <th:block th:replace="~{fragment/config :: configFragment}"></th:block>
     <!-- config fragment 사용 -->
+    <th:block th:replace="fragment/config :: configFragment"></th:block>
 </head>
-<body>
-<div class="row" style="position:fixed; !important; width: 100%; margin-left: 0rem;">
-    <th:block th:replace="~{fragment/headSideBar :: headerFragment}"></th:block>
 
-    <th:block th:replace="~{fragment/headSideBar :: sideBarFragment}"></th:block>
-    <div class="col-9 mt-5" style="text-align: center; float:left;">
-        <div layout:fragment="content"></div>
+<body>
+<!-- header fragment 사용 -->
+<!--
+    content fragment 사용
+    현재 layout을 사용하는 content fragment의 내용을 삽입한다.
+-->
+
+<!--<th:block layout:fragment="content"></th:block>-->
+
+
+<div>
+
+    <th:block th:replace="fragment/headSideBar :: headerFragment"></th:block>
+    <div class="row">
+        <div class="col-2">
+            <th:block th:replace="fragment/headSideBar :: sideBarFragment"></th:block>
+        </div>
+        <div class="col-9 mt-5" style="text-align: center; float:left;">
+            <th:block layout:fragment="content"></th:block>
+        </div>
     </div>
+
+
 </div>
 
 
+<!-- footer fragment 사용 -->
 </body>
+
 </html>

@@ -4,23 +4,18 @@
 
 <!--configFragment 선언-->
 <th:block th:fragment="configFragment">
+    <script src="/js/main.js"></script>
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/bootstrap2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap2/js/bootstrap.bundle.min.js"></script>
+
     <!-- 이 영역에 공통으로 사용할 css, js library를 선언한다. -->
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/vendor/bootstrap2/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}">
-    <link rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}">
-    <link rel="stylesheet" th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}">
-    <link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}">
-    <link rel="stylesheet" th:href="@{/css/mdTable.css}">
-    <link rel="stylesheet" th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}">
-
-
-    <script th:src="@{/js/main.js}"></script>
-    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{/vendor/bootstrap2/js/bootstrap.bundle.min.js}"></script>
-
-    <!--    <script th:src="@{'https://kit.fontawesome.com/24311b556d.js' crossorigin='anonymous'}"></script>-->
-
 
     <!-- Content Page의 CSS fragment 삽입 -->
     <th:block layout:fragment="css"></th:block>
@@ -29,3 +24,4 @@
     <th:block layout:fragment="script"></th:block>
 
 </th:block>
+</html>
