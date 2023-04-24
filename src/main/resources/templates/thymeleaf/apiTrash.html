@@ -42,6 +42,32 @@
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
     <link href="/css/table.css" rel="stylesheet"/>
+    <style>
+        #tooltipReturn{
+            padding: 8px 2px;
+            background-color: #444444;
+            border-radius: 5px;
+            color: #ffffff;
+            position: absolute;
+            opacity: 0;
+            transition: all ease 0.5s;
+        }
+        #tooltipTrash{
+            padding: 8px 2px;
+            background-color: #444444;
+            border-radius: 5px;
+            color: #ffffff;
+            position: absolute;
+            opacity: 0;
+            transition: all ease 0.5s;
+        }
+        #return:hover + #tooltipReturn{
+            opacity: 1;
+        }
+        #trash:hover + #tooltipTrash{
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -447,10 +473,12 @@
                                         <td>get-v1-invest</td>
                                         <td>v1</td>
                                         <td>
-                                            <i onclick="location.href='#'" style="cursor: pointer;"
+                                            <i onclick="goReturn()" id="return" style="cursor: pointer;"
                                                class="fa-solid fa-rotate-left"></i>
-                                            <i onclick="location.href='#'" style="cursor: pointer;"
+                                            <div id="tooltipReturn">복구</div>
+                                            <i onclick="completeDelete()" id="trash" style="cursor: pointer;"
                                                class="fa-solid fa-trash-can"></i>
+                                            <div id="tooltipTrash">완전 삭제</div>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -503,6 +531,13 @@
     }, function () {
         $(this).css("background-color", "white");
     })
+
+    function goReturn() {
+        Swal.fire
+    }
+
+
+
 </script>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
