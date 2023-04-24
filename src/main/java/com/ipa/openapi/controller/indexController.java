@@ -13,15 +13,7 @@ public class indexController {
         return "index";
     }
 
-    @GetMapping("/table")
-    public String table() {
-        return "tables";
-    }
 
-    @GetMapping("/apis")
-    public String apis() {
-        return "apis";
-    }
 
 
     @GetMapping("/headSideBar")
