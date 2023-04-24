@@ -63,13 +63,6 @@ label {
     padding-bottom: 0.625rem;
 
 }
-
-.accordion-item{
-}
-
-
-
-
 @media only screen and (max-width: 930px) {
     .demo02 {
         display: block;
@@ -96,4 +89,168 @@ label {
     .demo02 td {
         display: block;
     }
+}
+#search {
+    float: right;
+}
+
+#userInfobutton {
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.btn-primary {
+    display: inline-block;
+}
+
+#plus-icon {
+    width: 32px;
+    height: 32px;
+    float: right;
+}
+
+.changeColor {
+    background-color: lightgrey;
+}
+td tr th{
+    table-layout: fixed;
+    max-width:20%;
+    height: auto;
+}
+
+#search {
+    float: right;
+}
+
+#userInfobutton {
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.btn-primary {
+    display: inline-block;
+}
+
+#plus-icon {
+    width: 32px;
+    height: 32px;
+    float: right;
+}
+
+.changeColor {
+    background-color: lightgrey;
+}
+
+.datatable-dropdown {
+    float: right;
+}
+#search {
+    float: right;
+}
+
+#userInfobutton {
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.btn-primary {
+    display: inline-block;
+}
+
+#plus-icon {
+    width: 32px;
+    height: 32px;
+    float: right;
+}
+
+.changeColor {
+    background-color: lightgrey;
+}
+
+#CallbackURL {
+    width: 100%;
+    table-layout: fixed;
+}
+
+#URLScheme {
+    width: 100%;
+    table-layout: fixed;
+}
+
+#callbackUrlTitle {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#APIDomainTitle {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#search {
+    float: right;
+}
+
+#userInfobutton {
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.btn-primary {
+    display: inline-block;
+}
+
+#plus-icon {
+    width: 32px;
+    height: 32px;
+    float: right;
+}
+
+.changeColor {
+    background-color: lightgrey;
+}
+
+#CallbackURL {
+    width: 100%;
+    table-layout: fixed;
+}
+
+#URLScheme {
+    width: 100%;
+    table-layout: fixed;
+}
+
+#callbackUrlTitle {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#APIDomainTitle {
+    text-align: center;
+    vertical-align: middle;
+}
+#search {
+    float: right;
+}
+
+
+#closeButton {
+    width: fit-content;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.btn-primary {
+    margin: auto;
+    display: inline-block;
+}
+
+#plus-icon {
+    width: 32px;
+    height: 32px;
+    float: right;
+}
+
+.changeColor {
+    background-color: lightgrey;
 }
