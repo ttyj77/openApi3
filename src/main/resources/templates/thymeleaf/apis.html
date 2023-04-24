@@ -536,5 +536,137 @@
     </div>
 </div>
 
+<script>
+    $('.inBtn').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+    $('.goTable').click(function (e) {
+        e.preventDefault();
+        location.href = 'table';
+    });
+
+    function saveApi() {
+        let context = document.querySelector('.contextApi');
+        let name = document.querySelector('.nameApi');
+        if (context.value === '') {
+            Swal.fire({
+                icon: 'error',
+                text: '컨텍스트를 입력해주세요.'
+            });
+        } else if (name.value === '') {
+            Swal.fire({
+                icon: 'error',
+                text: '이름을 입력해주세요.'
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                text: 'API 그룹이 저장되었습니다.'
+            }).then(() => {
+                $('#updateModal').modal('hide');
+                $('#registerModal').modal('hide');
+            });
+        }
+    }
+
+    function saveApiUpdate() {
+        if ($('#contextApi').val().length === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: '컨텍스트를 입력해주세요.'
+            });
+        } else if ($('#nameApi').val().length === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: '이름을 입력해주세요.'
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                text: 'API 그룹이 저장되었습니다.'
+            }).then(() => {
+                $('#updateModal').modal('hide');
+                $('#registerModal').modal('hide');
+            });
+        }
+    }
+
+    function removeApi() {
+        Swal.fire({
+            showCancelButton: true,
+            cancelButtonText: "취소",
+            confirmButtonText: "삭제",
+            icon: 'warning',
+            text: "\'XX업권\' API 그룹을 삭제하시겠습니까?"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: '삭제 성공',
+                    icon: 'success'
+                })
+            }
+        });
+    }
+
+    function checkRole() {
+        let admin = document.getElementById('admin');
+        let normal = document.getElementById('normal');
+        let api = document.getElementById('api');
+        let md = document.getElementById('md');
+
+        let adminBadge = $(document.createElement("span")).addClass("badge badge-secondary admin").attr('style', "margin-right:2px").text(admin.value);
+        let normalBadge = $(document.createElement("span")).addClass("badge badge-secondary normal").attr('style', "margin-right:2px").text(normal.value);
+        let apiBadge = $(document.createElement("span")).addClass("badge badge-secondary api").attr('style', "margin-right:2px").text(api.value);
+        let mdBadge = $(document.createElement("span")).addClass("badge badge-secondary md").attr('style', "margin-right:2px").text(md.value);
+
+        let radimin = document.querySelector('.admin');
+        let rnormal = document.querySelector('.normal');
+        let rapi = document.querySelector('.api');
+        let rmd = document.querySelector('.md');
+
+        if (admin.checked && radimin == null) {
+            $('#target').append(adminBadge);
+        } else if (radimin != null && !admin.checked) {
+            $('.admin').remove();
+        }
+
+        if (normal.checked && rnormal == null) {
+            $('#target').append(normalBadge);
+        } else if (rnormal != null && !normal.checked) {
+            $('.normal').remove();
+        }
+
+        if (api.checked && rapi == null) {
+            $('#target').append(apiBadge);
+        } else if (rapi != null && !api.checked) {
+            $('.api').remove();
+        }
+
+        if (md.checked && rmd == null) {
+            $('#target').append(mdBadge);
+        } else if (rmd != null && !md.checked) {
+            $('.md').remove();
+        }
+    }
+
+</script>
+<!-- Bootstrap core JavaScript-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+<!-- Core plugin JavaScript-->
+<!--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<!--<script src="vendor/datatables/jquery.dataTables.min.js"></script>-->
+<!--<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
 </body>
 </html>
