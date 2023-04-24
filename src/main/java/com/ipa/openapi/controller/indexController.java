@@ -28,6 +28,11 @@ public class indexController {
         return "test";
     }
 
+    @GetMapping("apiTrash")
+    public String apiTrash() {
+        return "apiTrash";
+    }
+
 
     @GetMapping("/main")
     @ResponseBody
