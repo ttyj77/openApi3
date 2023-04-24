@@ -69,7 +69,6 @@ public class indexController {
     public String accountList(){
         return "accountList";
     }
-
     @GetMapping("requestPage")
     public String Authorization(){
         return "requestPage";
@@ -77,5 +76,13 @@ public class indexController {
     @GetMapping("authorization")
     public String authorization(){
         return "authorization";
+    }
+    @GetMapping("mydataServiceControl")
+    public String mydataServiceControl(){
+        return "mydataServiceControl";
+    }
+    @GetMapping("mydataToken")
+    public String mydataToken(){
+        return "mydataToken";
     }
 }
