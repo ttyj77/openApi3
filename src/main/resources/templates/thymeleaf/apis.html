@@ -385,7 +385,8 @@
                                             <tbody>
                                             <tr>
                                                 <td class="tdbg">컨텍스트📍</td>
-                                                <td><input type="text" class="form-control contextApi" value="/" required></td>
+                                                <td><input type="text" class="form-control contextApi" value="/"
+                                                           required></td>
                                             </tr>
                                             <tr>
                                                 <td class="tdbg">이름📍</td>
@@ -462,8 +463,8 @@
                                             <button class="btn btn-light inBtn" data-bs-toggle="modal"
                                                     data-bs-target="#updateModal"
                                             >
-<!--                                            <button class="btn btn-light inBtn" onclick="event.stopPropagation(); $('#updateModal').modal('show');"-->
-<!--                                            >-->
+                                                <!--                                            <button class="btn btn-light inBtn" onclick="event.stopPropagation(); $('#updateModal').modal('show');"-->
+                                                <!--                                            >-->
                                                 <i class="fa-solid fa-pen" style="color: #797a7c;"></i>
                                             </button>
                                             <button class="btn btn-light inBtn"
@@ -479,7 +480,7 @@
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="updateModalLabel">등록</h5>
+                                                        <h5 class="modal-title" id="updateModalLabel">보험업권</h5>
                                                         <div class="" style="cursor: pointer" data-bs-dismiss="modal"
                                                         ><i class="fa-solid fa-xmark" style="color: #7f7f7f;"></i></div>
                                                     </div>
@@ -489,12 +490,14 @@
                                                                 <tbody>
                                                                 <tr>
                                                                     <td class="tdbg">컨텍스트📍</td>
-                                                                    <td><input type="text" class="form-control contextApi"
+                                                                    <td><input type="text" class="form-control"
+                                                                               id="contextApi"
                                                                                value="/v1/insu" required></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="tdbg">이름📍</td>
-                                                                    <td><input type="text" class="form-control nameApi"
+                                                                    <td><input type="text" class="form-control"
+                                                                               id="nameApi"
                                                                                value="보험업권" required></td>
                                                                 </tr>
                                                                 <tr>
@@ -551,7 +554,9 @@
                                                         <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">취소
                                                         </button>
-                                                        <button type="submit" class="btn btn-primary" onclick="saveApi()">저장</button>
+                                                        <button type="submit" class="btn btn-primary"
+                                                                onclick="saveApiUpdate()">저장
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -706,16 +711,43 @@
     function saveApi() {
         let context = document.querySelector('.contextApi');
         let name = document.querySelector('.nameApi');
-        if (name.value === '' || context.value === '') {
+        if (context.value === '') {
             Swal.fire({
                 icon: 'error',
-                text: '필수 입력값을 입력해주세요.'
+                text: '컨텍스트를 입력해주세요.'
+            });
+        } else if (name.value === '') {
+            Swal.fire({
+                icon: 'error',
+                text: '이름을 입력해주세요.'
             });
         } else {
             Swal.fire({
                 icon: 'success',
                 text: 'API 그룹이 저장되었습니다.'
-            }).then(()=>{
+            }).then(() => {
+                $('#updateModal').modal('hide');
+                $('#registerModal').modal('hide');
+            });
+        }
+    }
+
+    function saveApiUpdate() {
+        if ($('#contextApi').val().length === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: '컨텍스트를 입력해주세요.'
+            });
+        } else if ($('#nameApi').val().length === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: '이름을 입력해주세요.'
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                text: 'API 그룹이 저장되었습니다.'
+            }).then(() => {
                 $('#updateModal').modal('hide');
                 $('#registerModal').modal('hide');
             });
@@ -784,7 +816,7 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
