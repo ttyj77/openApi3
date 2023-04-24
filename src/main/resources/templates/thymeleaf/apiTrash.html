@@ -533,7 +533,10 @@
     })
 
     function goReturn() {
-        Swal.fire
+        Swal.fire({
+            icon: 'warning',
+            text: '메소드를 복구하시겠습니까?'
+        });
     }
 
 
