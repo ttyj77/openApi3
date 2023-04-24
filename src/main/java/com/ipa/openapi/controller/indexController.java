@@ -23,6 +23,12 @@ public class indexController {
         return "apis";
     }
 
+
+    @GetMapping("/headSideBar")
+    public String apisTest() {
+        return "/fragment/headSideBar";
+    }
+
     @GetMapping("/test")
     public String test() {
         return "test";
@@ -59,8 +65,17 @@ public class indexController {
         return "modalTest";
     }
 
+    @GetMapping("accountList")
+    public String accountList(){
+        return "accountList";
+    }
 
-
-
-
+    @GetMapping("requestPage")
+    public String Authorization(){
+        return "requestPage";
+    }
+    @GetMapping("authorization")
+    public String authorization(){
+        return "authorization";
+    }
 }
