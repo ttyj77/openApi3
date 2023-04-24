@@ -36,7 +36,7 @@
               integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
               crossorigin="anonymous">
 
-        <link href="/css/table.css" rel="stylesheet"/>
+        <link href="/css/apiDetails.css" rel="stylesheet"/>
 
 
     </th:block>
@@ -106,7 +106,7 @@
                         <option>out_of_service</option>
                     </select>
                     <form class="d-flex">
-                        <input type="text" class="form-control m-0" value="검색어 입력">
+                        <input type="text" class="form-control m-0" placeholder="검색어 입력">
                         <button type="submit" class="btn btn-dark btn-sm" style=" width: 45%">
                             <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i> 조회
                         </button>
@@ -128,10 +128,18 @@
                                     /v1/insu | get-v1-insu
                                 </div>
                                 <div>
-                                    <i class="fa-solid fa-arrows-rotate"
+                                    <i class="fa-solid fa-arrows-rotate renew" data-toggle="tooltip" data-placement="top" title="리소스 갱신"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
-                                    <i class="fa-solid fa-file-word"
+<!--                                    <div id="tooltipRenew">리소스 갱신</div>-->
+                                    <i class="fa-solid fa-file-word doc"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
+<!--                                    <div id="tooltipDoc">Swagger 문서</div>-->
+                                    <i onclick="location.href='#'" style="cursor: pointer;"
+                                    class="fa-solid fa-globe ui"></i>
+<!--                                    <div id="tooltipUI">Swagger UI</div>-->
+                                    <i onclick="location.href='#'" style="cursor: pointer;"
+                                       class="fa-solid fa-trash-can delete"></i>
+<!--                                    <div id="tooltipDelete">삭제</div>-->
                                 </div>
                             </div>
                         </button>
@@ -170,9 +178,11 @@
                                         </td>
                                         <td>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-file-word"></i>
+                                               class="fa-solid fa-file-word doc"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-trash-can"></i>
+                                               class="fa-solid fa-globe ui"></i>
+                                            <i onclick="location.href='#'" style="cursor: pointer;"
+                                               class="fa-solid fa-trash-can delete"></i>
                                         </td>
                                     </tr>
                                     <tr onclick="location.href='#'" style="cursor: pointer">
@@ -192,9 +202,11 @@
                                         </td>
                                         <td>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-file-word"></i>
+                                               class="fa-solid fa-file-word doc"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-trash-can"></i>
+                                               class="fa-solid fa-globe ui"></i>
+                                            <i onclick="location.href='#'" style="cursor: pointer;"
+                                               class="fa-solid fa-trash-can delete"></i>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -289,9 +301,11 @@
 </div>
 <!-- End of Main Content -->
 
-
 <!-- Custom scripts for all pages-->
 <script src="/js/sb-admin-2.min.js"></script>
+<script>
+    $('.renew').tooltip();
+</script>
 
 
 </body>
