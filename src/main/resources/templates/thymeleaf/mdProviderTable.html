@@ -67,8 +67,10 @@
                         <div class=" row" style="    display: flex;justify-content: space-between;">
                             <div class="col-md-7 m-3">
                                 <label for="selectDate">조회날짜&nbsp;&nbsp;</label>
-                                <input type="date" id="selectDate" name="selectDate" style="width: 220px; text-align: center">
-                                <input class="btn btn-primary p-1" type="submit" value="오늘">
+                                <input type="date" id="selectDate" name="selectDate"
+                                       style="width: 220px; text-align: center;">
+                                <input class="btn btn-primary p-1" type="submit" value="오늘"
+                                       style="  margin-bottom: 4px; height: 31px;">
                             </div>
                             <div class="col-md-3 input-group m-3">
                                 <input type="text" class="form-control"
@@ -142,7 +144,12 @@
                                     <tbody>
                                     <tr>
                                         <td>전송요구SEQ</td>
-                                        <td>TRQ_20211123094515_1725</td>
+                                        <td>TRQ_20211123094515_1725
+                                            <button class="btn btn-dark h-10 ml-3" data-toggle="modal"
+                                                    data-target="#requestModal">전송요구
+                                            </button>
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>기관명:서비스명</td>
@@ -176,6 +183,95 @@
                         </div>
                     </div>
                 </div>
+                <!-- details info Modal start -->
+                <div class="modal fade" id="requestModal" tabindex="-1" role="dialog"
+                     aria-labelledby="requestModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="width: 800px;height: 800px;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="requestModalLabel">전송요구내역</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="overflow-y: scroll;overflow-x: hidden">
+                                <table class="table" style="width: -webkit-fill-available;">
+                                    <tbody>
+                                    <tr>
+                                        <td>기본정보</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>기관코드</td>
+                                        <td>ZVAABG0000
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>기관명</td>
+                                        <td>농협은행 주식회사</td>
+                                        <td>서비스명</td>
+                                        <td>NH마이데이터서비스</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>전송요구타입</td>
+                                        <td>자산목록
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>통합고객번호</td>
+                                        <td>5730791447</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>전송주기</td>
+                                        <td>
+                                        </td>
+                                        <td>상태정보</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>전송준비일</td>
+                                        <td>
+                                        </td>
+                                        <td>전송요구일</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>토큰유효기간</td>
+                                        <td>
+                                        </td>
+                                        <td>토큰만료기간</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                <!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- End of Main Content -->
             <!-- details info Modal end -->
