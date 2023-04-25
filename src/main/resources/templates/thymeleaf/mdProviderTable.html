@@ -1,214 +1,285 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
-<!--      xmlns:th="http://www.thymeleaf.org"-->
-<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
-<!--      layout:decorate="~{layout/layout}">-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 
-<!--<head>-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-<!--    <meta name="description" content="">-->
-<!--    <meta name="author" content="">-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<!--    <title>거래이력(제공자)</title>-->
+    <title>거래이력(제공자)</title>
 
-<!--    &lt;!&ndash; Custom fonts for this template &ndash;&gt;-->
-<!--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
-<!--    <link-->
-<!--            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"-->
-<!--            rel="stylesheet">-->
+    <th:block layout:fragment="css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+    </th:block>
 
-<!--    &lt;!&ndash; Custom styles for this template &ndash;&gt;-->
-<!--    &lt;!&ndash;    <link href="/css/sb-admin-2.min.css" rel="stylesheet">&ndash;&gt;-->
+    <th:block layout:fragment="script">
+        <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>
+    </th:block>
 
-<!--    &lt;!&ndash; Custom styles for this page &ndash;&gt;-->
-<!--    &lt;!&ndash;    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">&ndash;&gt;-->
+</head>
 
-
-<!--    &lt;!&ndash; mdProviderTable.html 고유 스크립트 추가 &ndash;&gt;-->
-<!--    <th:block layout:fragment="script">-->
-<!--        &lt;!&ndash; Bootstrap core JavaScript&ndash;&gt;-->
-<!--        <script src="vendor/jquery/jquery.min.js"></script>-->
-<!--        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
-
-<!--        &lt;!&ndash; Core plugin JavaScript&ndash;&gt;-->
-<!--        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
-
-<!--        &lt;!&ndash; Custom scripts for all pages&ndash;&gt;-->
-<!--        <script src="js/sb-admin-2.min.js"></script>-->
-
-<!--        &lt;!&ndash; Page level plugins &ndash;&gt;-->
-<!--        &lt;!&ndash;검색, 페이지 필터링 &ndash;&gt;-->
-<!--        &lt;!&ndash;<script src="/vendor/datatables/jquery.dataTables.min.js"></script>&ndash;&gt;-->
-<!--        &lt;!&ndash;<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>&ndash;&gt;-->
-
-<!--        &lt;!&ndash; Page level custom scripts &ndash;&gt;-->
-<!--        <script src="js/demo/datatables-demo.js"></script>-->
-<!--    </th:block>-->
-
-<!--</head>-->
-
-<!--<body id="page-top">-->
-<!--<div layout:fragment="content">-->
-<!--    &lt;!&ndash; Page Wrapper &ndash;&gt;-->
-<!--    <div id="wrapper">-->
+<body>
+<div layout:fragment="content">
 
 
-<!--        &lt;!&ndash; Content Wrapper &ndash;&gt;-->
-<!--        <div id="content-wrapper" class="d-flex flex-column">-->
-<!--            &lt;!&ndash; Main Content &ndash;&gt;-->
-<!--            <div id="content">-->
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-<!--                &lt;!&ndash; Begin Page Content &ndash;&gt;-->
-<!--                <div class="container-fluid">-->
 
-<!--                    &lt;!&ndash; Page Heading &ndash;&gt;-->
-<!--                    <h1 class="h3 mb-2 text-gray-800">정보제공 API 거래이력</h1>-->
-<!--                    <p class="mb-4"></p>-->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
 
-<!--                    &lt;!&ndash; DataTales Example &ndash;&gt;-->
-<!--                    <div class="card shadow mb-4">-->
-<!--                        <div class="card-header py-3">-->
-<!--                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-<!--                        </div>-->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-<!--                        &lt;!&ndash; Topbar Search &ndash;&gt;-->
-<!--                        <div class=" row">-->
-<!--                            <div class="col-md-7">-->
-<!--                                <div th:replace="modalTest::appheader"></div>-->
-<!--                            </div>-->
-<!--                            <div class="col-md-4 input-group" style="margin-top: 10px; font-size: 8px; margin-left: 7%">-->
-<!--                                <input type="text" class="form-control"-->
-<!--                                       placeholder="검색어를 입력해주세요(요청API Code, 통합고객번호, 거래고유번호)"-->
-<!--                                       aria-label="Search" aria-describedby="basic-addon2">-->
-<!--                                <div class="input-group-append">-->
-<!--                                    <button class="btn btn-primary" type="button"-->
-<!--                                            style=" margin-top: 5px;height: 38px;">-->
-<!--                                        <i class="fas fa-search fa-sm"></i>-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="card-body">-->
-<!--                            <div class="table-responsive">-->
-<!--                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">-->
-<!--                                    <thead>-->
-<!--                                    <tr style=" width: -webkit-fill-available;">-->
-<!--                                        <th>요청일</th>-->
-<!--                                        <th>요청시간</th>-->
-<!--                                        <th>응답일자</th>-->
-<!--                                        <th>응답시간(sec)</th>-->
-<!--                                        <th>응답코드</th>-->
-<!--                                        <th>API코드</th>-->
-<!--                                        <th>통합고객번호</th>-->
-<!--                                        <th>정기적 전송</th>-->
-<!--                                        <th>거래고유번호</th>-->
-<!--                                        <th>전송요구타입</th>-->
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">정보제공 API 거래이력</h1>
+                    <p class="mb-4"></p>
 
-<!--                                    </tr>-->
-<!--                                    </thead>-->
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
 
-<!--                                    <tbody>-->
-<!--                                    <tr data-toggle="modal" data-target="#exampleModal">-->
-<!--                                        <th>2021-11-23</th>-->
-<!--                                        <th>15:18:16.614</th>-->
-<!--                                        <th>2021-11-23 15:18:16.642</th>-->
-<!--                                        <th>00.280</th>-->
-<!--                                        <th>00000</th>-->
-<!--                                        <th>IS08</th>-->
-<!--                                        <th>9077805756</th>-->
-<!--                                        <th>user-refresh</th>-->
-<!--                                        <th>QMBFCK67NULBGK72D1YE1MMYB</th>-->
-<!--                                        <th>마이데이터</th>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                        <!-- Topbar Search -->
+                        <div class=" row" style="    display: flex;justify-content: space-between;">
+                            <div class="col-md-7 m-3">
+                                <label for="selectDate">조회날짜&nbsp;&nbsp;</label>
+                                <input type="date" id="selectDate" name="selectDate"
+                                       style="width: 220px; text-align: center;">
+                                <input class="btn btn-primary p-1" type="submit" value="오늘"
+                                       style="  margin-bottom: 4px; height: 31px;">
+                            </div>
+                            <div class="col-md-3 input-group m-3">
+                                <input type="text" class="form-control"
+                                       placeholder="검색어를 입력해주세요"
+                                       aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button"
+                                            style="height: 38px;">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr style=" width: -webkit-fill-available;">
+                                        <th>요청일</th>
+                                        <th>요청시간</th>
+                                        <th>응답일자</th>
+                                        <th>응답시간(sec)</th>
+                                        <th>응답코드</th>
+                                        <th>API코드</th>
+                                        <th>통합고객번호</th>
+                                        <th>정기적 전송</th>
+                                        <th>거래고유번호</th>
+                                        <th>전송요구타입</th>
 
-<!--                </div>-->
-<!--                &lt;!&ndash; /.container-fluid &ndash;&gt;-->
-<!--                &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+                                    </tr>
+                                    </thead>
 
-<!--                &lt;!&ndash; details info Modal start &ndash;&gt;-->
-<!--                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"-->
-<!--                     aria-labelledby="exampleModalLabel"-->
-<!--                     aria-hidden="true">-->
-<!--                    <div class="modal-dialog" role="document">-->
-<!--                        <div class="modal-content" style="width: 800px;-->
-<!--    height: 800px;">-->
-<!--                            <div class="modal-header">-->
-<!--                                <h5 class="modal-title" id="exampleModalLabel">정보제공 API 거래이력</h5>-->
-<!--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                    <span aria-hidden="true">&times;</span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                            <div class="modal-body" style="overflow-y: scroll;overflow-x: hidden">-->
-<!--                                <table class="table" style="width: -webkit-fill-available;">-->
-<!--                                    <tbody>-->
-<!--                                    <tr>-->
-<!--                                        <td>전송요구SEQ</td>-->
-<!--                                        <td>TRQ_20211123094515_1725</td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>기관명:서비스명</td>-->
-<!--                                        <td>주식회사 하나은행 : 마이데이터 서비스</td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>거래고유번호</td>-->
-<!--                                        <td>QMBFCK67NULBGK72D1YE1MMYB</td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>요청헤더</td>-->
-<!--                                        <td><textarea style="height: 200px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>응답메세지</td>-->
-<!--                                        <td>200</td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>응답데이터</td>-->
-<!--                                        <td><textarea style="height: 200px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
-<!--                            </div>-->
-<!--                            <div class="modal-footer">-->
-<!--                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>-->
-<!--                                &lt;!&ndash;                            <button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; End of Main Content &ndash;&gt;-->
-<!--            &lt;!&ndash; details info Modal end &ndash;&gt;-->
-<!--            &lt;!&ndash; Footer &ndash;&gt;-->
-<!--            <footer class="sticky-footer bg-white">-->
-<!--                <div class="container my-auto">-->
-<!--                    <div class="copyright text-center my-auto">-->
-<!--                        <span>Copyright &copy; Your Website 2020</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </footer>-->
-<!--            &lt;!&ndash; End of Footer &ndash;&gt;-->
+                                    <tbody>
+                                    <tr data-toggle="modal" data-target="#exampleModal">
+                                        <th>2021-11-23</th>
+                                        <th>15:18:16.614</th>
+                                        <th>2021-11-23 15:18:16.642</th>
+                                        <th>00.280</th>
+                                        <th>00000</th>
+                                        <th>IS08</th>
+                                        <th>9077805756</th>
+                                        <th>user-refresh</th>
+                                        <th>QMBFCK67NULBGK72D1YE1MMYB</th>
+                                        <th>마이데이터</th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-<!--        </div>-->
-<!--        &lt;!&ndash; End of Content Wrapper &ndash;&gt;-->
+                </div>
+                <!-- /.container-fluid -->
+                <!-- Button trigger modal -->
 
-<!--    </div>-->
-<!--    &lt;!&ndash; End of Page Wrapper &ndash;&gt;-->
+                <!-- details info Modal start -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="width: 800px;
+    height: 800px;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">정보제공 API 거래이력</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="overflow-y: scroll;overflow-x: hidden">
+                                <table class="table" style="width: -webkit-fill-available;">
+                                    <tbody>
+                                    <tr>
+                                        <td>전송요구SEQ</td>
+                                        <td>TRQ_20211123094515_1725
+                                            <button class="btn btn-dark h-10 ml-3" data-toggle="modal"
+                                                    data-target="#requestModal">전송요구
+                                            </button>
+                                        </td>
 
-<!--    &lt;!&ndash; Scroll to Top Button&ndash;&gt;-->
-<!--    <a class="scroll-to-top rounded" href="#page-top">-->
-<!--        <i class="fas fa-angle-up"></i>-->
-<!--    </a>-->
+                                    </tr>
+                                    <tr>
+                                        <td>기관명:서비스명</td>
+                                        <td>주식회사 하나은행 : 마이데이터 서비스</td>
+                                    </tr>
+                                    <tr>
+                                        <td>거래고유번호</td>
+                                        <td>QMBFCK67NULBGK72D1YE1MMYB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>요청헤더</td>
+                                        <td><textarea style="height: 200px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>응답메세지</td>
+                                        <td>200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>응답데이터</td>
+                                        <td><textarea style="height: 200px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                <!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- details info Modal start -->
+                <div class="modal fade" id="requestModal" tabindex="-1" role="dialog"
+                     aria-labelledby="requestModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="width: 800px;height: 800px;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="requestModalLabel">전송요구내역</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="overflow-y: scroll;overflow-x: hidden">
+                                <table class="table" style="width: -webkit-fill-available;">
+                                    <tbody>
+                                    <tr>
+                                        <td>기본정보</td>
+                                    </tr>
 
-<!--</div>-->
-<!--</body>-->
+                                    <tr>
+                                        <td>기관코드</td>
+                                        <td>ZVAABG0000
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>기관명</td>
+                                        <td>농협은행 주식회사</td>
+                                        <td>서비스명</td>
+                                        <td>NH마이데이터서비스</td>
+                                    </tr>
 
-<!--</html>-->
+                                    <tr>
+                                        <td>전송요구타입</td>
+                                        <td>자산목록
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>통합고객번호</td>
+                                        <td>5730791447</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>전송주기</td>
+                                        <td>
+                                        </td>
+                                        <td>상태정보</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>전송준비일</td>
+                                        <td>
+                                        </td>
+                                        <td>전송요구일</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>토큰유효기간</td>
+                                        <td>
+                                        </td>
+                                        <td>토큰만료기간</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                <!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- details info Modal end -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+</div>
+</body>
+
+</html>
