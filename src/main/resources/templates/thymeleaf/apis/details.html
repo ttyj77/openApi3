@@ -15,14 +15,11 @@
     <th:block layout:fragment="css">
         <link href="/images/logo_img.png" rel="shortcut icon" type="image/x-icon">
 
-        <!-- Custom fonts for this template -->
-        <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link
                 href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
                 rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 
         <!-- Custom styles for this template -->
@@ -36,7 +33,7 @@
               integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
               crossorigin="anonymous">
 
-        <link href="/css/table.css" rel="stylesheet"/>
+        <link href="/css/apiDetails.css" rel="stylesheet"/>
 
 
     </th:block>
@@ -57,17 +54,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
-
-        <script>
-            window.onload = function () {
-                $('.accordion-button').hover(function () {
-                    $(this).css("background-color", "#e0f9ff");
-                }, function () {
-                    $(this).css("background-color", "white");
-                })
-            }
-        </script>
-
+        <script src="/js/sb-admin-2.min.js"></script>
+        <script href="/js/details.js" rel="script"></script>
     </th:block>
 
 
@@ -106,7 +94,7 @@
                         <option>out_of_service</option>
                     </select>
                     <form class="d-flex">
-                        <input type="text" class="form-control m-0" value="검색어 입력">
+                        <input type="text" class="form-control m-0" placeholder="검색어 입력">
                         <button type="submit" class="btn btn-dark btn-sm" style=" width: 45%">
                             <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i> 조회
                         </button>
@@ -128,10 +116,19 @@
                                     /v1/insu | get-v1-insu
                                 </div>
                                 <div>
-                                    <i class="fa-solid fa-arrows-rotate"
+                                    <i class="fa-solid fa-arrows-rotate renew" data-toggle="tooltip"
+                                       data-placement="top" title="리소스 갱신"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
-                                    <i class="fa-solid fa-file-word"
+                                    <!--                                    <div id="tooltipRenew">리소스 갱신</div>-->
+                                    <i class="fa-solid fa-file-word doc"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
+                                    <!--                                    <div id="tooltipDoc">Swagger 문서</div>-->
+                                    <i onclick="location.href='#'" style="cursor: pointer;"
+                                       class="fa-solid fa-globe ui"></i>
+                                    <!--                                    <div id="tooltipUI">Swagger UI</div>-->
+                                    <i onclick="location.href='#'" style="cursor: pointer;"
+                                       class="fa-solid fa-trash-can delete"></i>
+                                    <!--                                    <div id="tooltipDelete">삭제</div>-->
                                 </div>
                             </div>
                         </button>
@@ -170,9 +167,11 @@
                                         </td>
                                         <td>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-file-word"></i>
+                                               class="fa-solid fa-file-word doc"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-trash-can"></i>
+                                               class="fa-solid fa-globe ui"></i>
+                                            <i onclick="location.href='#'" style="cursor: pointer;"
+                                               class="fa-solid fa-trash-can delete"></i>
                                         </td>
                                     </tr>
                                     <tr onclick="location.href='#'" style="cursor: pointer">
@@ -192,9 +191,11 @@
                                         </td>
                                         <td>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-file-word"></i>
+                                               class="fa-solid fa-file-word doc"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
-                                               class="fa-solid fa-trash-can"></i>
+                                               class="fa-solid fa-globe ui"></i>
+                                            <i onclick="location.href='#'" style="cursor: pointer;"
+                                               class="fa-solid fa-trash-can delete"></i>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -288,11 +289,6 @@
 
 </div>
 <!-- End of Main Content -->
-
-
-<!-- Custom scripts for all pages-->
-<script src="/js/sb-admin-2.min.js"></script>
-
 
 </body>
 

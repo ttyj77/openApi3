@@ -17,5 +17,10 @@ public class apiController {
         return "/apis/details";
     }
 
+    @GetMapping("/trash")
+    public String apiTrash() {
+        return "/apis/trash";
+    }
+
 
 }
