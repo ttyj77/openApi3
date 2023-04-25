@@ -57,17 +57,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
-
-        <script>
-            window.onload = function () {
-                $('.accordion-button').hover(function () {
-                    $(this).css("background-color", "#e0f9ff");
-                }, function () {
-                    $(this).css("background-color", "white");
-                })
-            }
-        </script>
-
+        <script src="/js/sb-admin-2.min.js"></script>
+        <link href="/js/details.js" rel="script">
     </th:block>
 
 
@@ -128,18 +119,19 @@
                                     /v1/insu | get-v1-insu
                                 </div>
                                 <div>
-                                    <i class="fa-solid fa-arrows-rotate renew" data-toggle="tooltip" data-placement="top" title="리소스 갱신"
+                                    <i class="fa-solid fa-arrows-rotate renew" data-toggle="tooltip"
+                                       data-placement="top" title="리소스 갱신"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
-<!--                                    <div id="tooltipRenew">리소스 갱신</div>-->
+                                    <!--                                    <div id="tooltipRenew">리소스 갱신</div>-->
                                     <i class="fa-solid fa-file-word doc"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
-<!--                                    <div id="tooltipDoc">Swagger 문서</div>-->
+                                    <!--                                    <div id="tooltipDoc">Swagger 문서</div>-->
                                     <i onclick="location.href='#'" style="cursor: pointer;"
-                                    class="fa-solid fa-globe ui"></i>
-<!--                                    <div id="tooltipUI">Swagger UI</div>-->
+                                       class="fa-solid fa-globe ui"></i>
+                                    <!--                                    <div id="tooltipUI">Swagger UI</div>-->
                                     <i onclick="location.href='#'" style="cursor: pointer;"
                                        class="fa-solid fa-trash-can delete"></i>
-<!--                                    <div id="tooltipDelete">삭제</div>-->
+                                    <!--                                    <div id="tooltipDelete">삭제</div>-->
                                 </div>
                             </div>
                         </button>
@@ -300,13 +292,6 @@
 
 </div>
 <!-- End of Main Content -->
-
-<!-- Custom scripts for all pages-->
-<script src="/js/sb-admin-2.min.js"></script>
-<script>
-    $('.renew').tooltip();
-</script>
-
 
 </body>
 
