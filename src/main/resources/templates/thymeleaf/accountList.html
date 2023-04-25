@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
+      layout:decorate="~{layout/layout}" lang="ko">
 
 <head>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -143,8 +143,6 @@
                     $("#idSpaceText").text(userId.textContent);
                 });
             }
-
-
         </script>
     </th:block>
 
@@ -166,16 +164,13 @@
                     <div>
                         <h1 class="h3 mb-2 text-gray-800" style="float: left">계정목록</h1>
                     </div>
-                    <div>
-                        <!--정보추가모달-->
-                        <svg id="plus-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                             fill="currentColor"
-                             class="bi bi-plus-square-fill" viewBox="0 0 16 16" data-bs-toggle="modal"
-                             style="float:right; position: sticky;"
-                             data-bs-target="#exampleModal">
-                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-                        </svg>
-                    </div>
+                    <svg id="plus-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                         fill="currentColor"
+                         class="bi bi-plus-square-fill" viewBox="0 0 16 16" data-bs-toggle="modal"
+                         style="float:right; position: static;"
+                         data-bs-target="#exampleModal">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                    </svg>
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
@@ -183,8 +178,6 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">정보 입력</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div>
@@ -202,8 +195,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="mb-3">
-                                        <label for="phonenumber" class="form-label">전화번호</label>
+                                    <div class="mb-3">56p
+                                           <label for="phonenumber" class="form-label">전화번호</label>
                                         <input type="text" class="form-control" id="phonenumber"
                                                name="phonenumber"
                                                placeholder="010-1234-5678">
@@ -267,7 +260,7 @@
                 <!--검색어 입력창-->
                 <!--유저정보테이블 시작-->
                 <div class="card-body">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+                    <table class="table table-bordered" id="dataTable"
                            onmouseenter="changeColor()" style="white-space: nowrap">
                         <thead>
                         <tr>
@@ -317,7 +310,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="card-body" style="font-size: 13px; white-space: nowrap">
-                        <table class="table table-bordered" id="informationTable" width="100%" cellspacing="0"
+                        <table class="table table-bordered" id="informationTable"
                                style="white-space: nowrap">
                             <thead>
                             </thead>
@@ -327,7 +320,7 @@
                                 <td class="tg-0lax" colspan="2" id="idSpace">
                                     <label for="idSpaceText">
                                         <input class="form-control bg-light border-0 small" id="idSpaceText"
-                                               value="yonghun">
+                                               value="yonghun" disabled>
                                     </label>
                                 </td>
                                 <th class="tg-0lax">이름</th>
