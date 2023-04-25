@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link href="/images/logo_img.png" rel="shortcut icon" type="image/x-icon">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>Trash</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,6 +33,8 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +42,32 @@
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
     <link href="/css/table.css" rel="stylesheet"/>
-
+    <style>
+        #tooltipReturn{
+            padding: 8px 2px;
+            background-color: #444444;
+            border-radius: 5px;
+            color: #ffffff;
+            position: absolute;
+            opacity: 0;
+            transition: all ease 0.5s;
+        }
+        #tooltipTrash{
+            padding: 8px 2px;
+            background-color: #444444;
+            border-radius: 5px;
+            color: #ffffff;
+            position: absolute;
+            opacity: 0;
+            transition: all ease 0.5s;
+        }
+        #return:hover + #tooltipReturn{
+            opacity: 1;
+        }
+        #trash:hover + #tooltipTrash{
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -156,7 +184,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item active">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="apis/details.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span></a>
         </li>
@@ -395,219 +423,96 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-flex justify-content-between">
-                    <h1 class="h3 mb-2 text-gray-800">보험업권 ( v1/insu )</h1>
-                    <div>
-                        <button class="btn btn-dark btn-sm">전제 리소스 갱신</button>
-                        <button class="btn btn-dark btn-sm">SWAGGER 등록</button>
-                        <button class="btn btn-dark btn-sm">EXCEL 등록</button>
-                        <button class="btn btn-dark btn-sm">SWAGGER-UI</button>
-                        <button class="btn btn-dark btn-sm">EXPORT</button>
-                    </div>
+                <div class="d-flex justify-content-between mb-5">
+                    <h1 class="h3 mb-2 text-gray-800">API 휴지통</h1>
                 </div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <select class="form-select">
-                            <option selected>리소스</option>
-                            <option>태그</option>
-                            <option>구분</option>
-                        </select>
-                        <button class="btn btn-outline-secondary btn-sm pick">+ 리소스 추가</button>
-                    </div>
-                    <div>
-                        <select class="form-select">
-                            <option selected>전체</option>
-                            <option>develop</option>
-                            <option>service</option>
-                            <option>deprecate</option>
-                            <option>out_of_service</option>
-                        </select>
-                        <form class="d-flex">
-                            <input type="text" class="form-control" value="검색어 입력">
-                            <button type="submit" class="btn btn-dark btn-sm">
-                                <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-                            </button>
-                        </form>
-                    </div>
-
+                <div class="d-flex mb-3 justify-content-end">
+                    <form class="d-flex justify-content-end" style="width: 60%">
+                        <input type="text" class="form-control m-0" value="검색어를 입력해주세요.">
+                        <button type="submit" class="btn btn-dark btn-sm" style=" width: 30%">
+                            <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i> 조회
+                        </button>
+                    </form>
                 </div>
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex justify-content-between">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                            <option selected="">Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <label for="floatingSelect">Works with selects</label>
 
-                        <select class="select">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                            <option value="5">Five</option>
-                        </select>
-                        <label class="form-label select-label">Example label</label>
-                    </div>
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
-                                    <div class="btn-control">
-                                        <div>
-                                            <i class="fa-solid fa-plus"
-                                               onclick="location.href='#'; event.stopPropagation()"></i>
-                                            /v1/insu | get-v1-insu
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-arrows-rotate"
-                                               onclick="location.href='#'; event.stopPropagation()"></i>
-                                            <i class="fa-solid fa-file-word"
-                                               onclick="location.href='#'; event.stopPropagation()"></i>
-                                        </div>
-                                    </div>
-                                </button>
-                            </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                 aria-labelledby="flush-headingOne"
-                                 data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <table class="table table-hover demo02">
-                                        <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">Method</th>
-                                            <th scope="col">URI</th>
-                                            <th scope="col">Summary</th>
-                                            <th scope="col">Security</th>
-                                            <th scope="col">Operation ID</th>
-                                            <th scope="col">Version</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">else</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr onclick="location.href='#'" style="cursor: pointer">
-                                            <td>GET</td>
-                                            <td>/v1/invest/accounts</td>
-                                            <td>get-v1-invest</td>
-                                            <td>Bearer</td>
-                                            <td>get-v1-invest</td>
-                                            <td>v1</td>
-                                            <td>
-                                                <select class="form-select">
-                                                    <option selected>develop</option>
-                                                    <option value="1">service</option>
-                                                    <option value="2">deprecate</option>
-                                                    <option value="3">out_of_service</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <i onclick="location.href='#'" style="cursor: pointer;"
-                                                   class="fa-solid fa-file-word"></i>
-                                                <i onclick="location.href='#'" style="cursor: pointer;"
-                                                   class="fa-solid fa-trash-can"></i>
-                                            </td>
-                                        </tr>
-                                        <tr onclick="location.href='#'" style="cursor: pointer">
-                                            <td>GET</td>
-                                            <td>/v1/invest/accounts</td>
-                                            <td>get-v1-invest</td>
-                                            <td>Bearer</td>
-                                            <td>get-v1-invest</td>
-                                            <td>v1</td>
-                                            <td>
-                                                <select class="form-select">
-                                                    <option selected>develop</option>
-                                                    <option value="1">service</option>
-                                                    <option value="2">deprecate</option>
-                                                    <option value="3">out_of_service</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <i onclick="location.href='#'" style="cursor: pointer;"
-                                                   class="fa-solid fa-file-word"></i>
-                                                <i onclick="location.href='#'" style="cursor: pointer;"
-                                                   class="fa-solid fa-trash-can"></i>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+            </div>
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
 
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                            <div class="btn-control">
+                                /v1/insu | get-v1-insu
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
-                                    <div class="btn-control">
-                                        <div>
-                                            <i class="fa-solid fa-plus"></i>
-                                            /v1/insu | get-v1-insu
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-arrows-rotate"></i>
-                                            <i class="fa-solid fa-file-word"></i>
-                                        </div>
-                                    </div>
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                 aria-labelledby="flush-headingTwo"
-                                 data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the
-                                    <code>.accordion-flush</code> class. This is the second item's accordion body. Let's
-                                    imagine this being
-                                    filled with some actual content.
-                                </div>
+                        </button>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingOne"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <table class="table table-hover demo02">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Method</th>
+                                        <th scope="col">URI</th>
+                                        <th scope="col">Summary</th>
+                                        <th scope="col">Security</th>
+                                        <th scope="col">Operation ID</th>
+                                        <th scope="col">Version</th>
+                                        <th scope="col">else</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr onclick="location.href='#'" style="cursor: pointer">
+                                        <td>GET</td>
+                                        <td>/v1/invest/accounts</td>
+                                        <td>get-v1-invest</td>
+                                        <td>Bearer</td>
+                                        <td>get-v1-invest</td>
+                                        <td>v1</td>
+                                        <td>
+                                            <i onclick="goReturn()" id="return" style="cursor: pointer;"
+                                               class="fa-solid fa-rotate-left"></i>
+                                            <div id="tooltipReturn">복구</div>
+                                            <i onclick="completeDelete()" id="trash" style="cursor: pointer;"
+                                               class="fa-solid fa-trash-can"></i>
+                                            <div id="tooltipTrash">완전 삭제</div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                        aria-controls="flush-collapseThree">
-                                    <div class="btn-control">
-                                        <div>
-                                            <i class="fa-solid fa-plus"></i>
-                                            /v1/insu | get-v1-insu
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-arrows-rotate"></i>
-                                            <i class="fa-solid fa-file-word"></i>
-                                        </div>
-                                    </div>
-                                </button>
-                            </h2>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                 aria-labelledby="flush-headingThree"
-                                 data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the
-                                    <code>.accordion-flush</code> class. This is the third item's accordion body.
-                                    Nothing more exciting
-                                    happening here in terms of content, but just filling up the space to make it look,
-                                    at least at first
-                                    glance, a bit more representative of how this would look in a real-world
-                                    application.
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div class="w-100 d-flex justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- /.container-fluid -->
 
     </div>
-    <!-- End of Main Content -->
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
 
 </div>
 <!-- End of Content Wrapper -->
@@ -620,27 +525,20 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary"
-                   href="../../../../../../../Desktop/startbootstrap-sb-admin-2-gh-pages/login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    $('.accordion-button').hover(function () {
+        $(this).css("background-color", "#e0f9ff");
+    }, function () {
+        $(this).css("background-color", "white");
+    })
 
+    function goReturn() {
+        Swal.fire
+    }
+
+
+
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

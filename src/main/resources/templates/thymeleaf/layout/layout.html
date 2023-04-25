@@ -6,21 +6,12 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>Bamdule</title>
 
     <!-- config fragment 사용 -->
     <th:block th:replace="fragment/config :: configFragment"></th:block>
 </head>
 
 <body>
-<!-- header fragment 사용 -->
-<!--
-    content fragment 사용
-    현재 layout을 사용하는 content fragment의 내용을 삽입한다.
--->
-
-<!--<th:block layout:fragment="content"></th:block>-->
-
 
 <div>
 
@@ -29,7 +20,7 @@
         <div class="col-2">
             <th:block th:replace="fragment/headSideBar :: sideBarFragment"></th:block>
         </div>
-        <div class="col-9 mt-5" style="text-align: center; float:left;">
+        <div class="col-9 mt-5" style="float:left;">
             <th:block layout:fragment="content"></th:block>
         </div>
     </div>
