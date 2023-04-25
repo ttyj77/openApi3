@@ -38,14 +38,11 @@
 
         <link href="/css/apiDetails.css" rel="stylesheet"/>
 
-
     </th:block>
 
 
     <!-- index.html 고유 스크립트 추가 -->
     <th:block layout:fragment="script">
-
-
         <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -58,7 +55,7 @@
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
         <script src="/js/sb-admin-2.min.js"></script>
-        <link href="/js/details.js" rel="script">
+        <script src="/js/details.js"></script>
     </th:block>
 
 
@@ -81,12 +78,12 @@
             </div>
             <div class="d-flex mb-3">
                 <div class="w-100 d-flex">
-                    <select class="form-select mr-4" style="width: 35%;">
-                        <option selected>리소스</option>
-                        <option>태그</option>
-                        <option>구분</option>
+                    <select class="form-select mr-4" onchange="selectChange()" id="show" style="width: 35%;">
+                        <option value="resource" selected>리소스</option>
+                        <option value="tag">태그</option>
+                        <option value="division">구분</option>
                     </select>
-                    <button class="btn btn-secondary pick">+ 리소스 추가</button>
+                    <button class="btn btn-secondary" id="pick">+</button>
                 </div>
                 <div class="d-flex w-100 justify-content-end">
                     <select class="form-select" style="width: 30%;">
@@ -120,16 +117,19 @@
                                 </div>
                                 <div>
                                     <i class="fa-solid fa-arrows-rotate renew" data-toggle="tooltip"
-                                       data-placement="top" title="리소스 갱신"
+                                       title="리소스 갱신"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
                                     <!--                                    <div id="tooltipRenew">리소스 갱신</div>-->
-                                    <i class="fa-solid fa-file-word doc"
+                                    <i class="fa-solid fa-file-word doc" data-toggle="tooltip"
+                                       title="Swagger 문서"
                                        onclick="location.href='#'; event.stopPropagation()"></i>
                                     <!--                                    <div id="tooltipDoc">Swagger 문서</div>-->
-                                    <i onclick="location.href='#'" style="cursor: pointer;"
+                                    <i onclick="location.href='#'" style="cursor: pointer;" data-toggle="tooltip"
+                                       title="Swagger UI"
                                        class="fa-solid fa-globe ui"></i>
                                     <!--                                    <div id="tooltipUI">Swagger UI</div>-->
-                                    <i onclick="location.href='#'" style="cursor: pointer;"
+                                    <i onclick="location.href='#'" style="cursor: pointer;" data-toggle="tooltip"
+                                       title="삭제"
                                        class="fa-solid fa-trash-can delete"></i>
                                     <!--                                    <div id="tooltipDelete">삭제</div>-->
                                 </div>
@@ -170,10 +170,16 @@
                                         </td>
                                         <td>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
+                                               data-toggle="tooltip"
+                                               title="Swagger 문서"
                                                class="fa-solid fa-file-word doc"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
+                                               data-toggle="tooltip"
+                                               title="Swagger UI"
                                                class="fa-solid fa-globe ui"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
+                                               data-toggle="tooltip"
+                                               title="삭제"
                                                class="fa-solid fa-trash-can delete"></i>
                                         </td>
                                     </tr>
@@ -194,10 +200,16 @@
                                         </td>
                                         <td>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
+                                               data-toggle="tooltip"
+                                               title="Swagger 문서"
                                                class="fa-solid fa-file-word doc"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
+                                               data-toggle="tooltip"
+                                               title="Swagger UI"
                                                class="fa-solid fa-globe ui"></i>
                                             <i onclick="location.href='#'" style="cursor: pointer;"
+                                               data-toggle="tooltip"
+                                               title="삭제"
                                                class="fa-solid fa-trash-can delete"></i>
                                         </td>
                                     </tr>
@@ -292,6 +304,9 @@
 
 </div>
 <!-- End of Main Content -->
+
+<!-- inherent js-->
+
 
 </body>
 
