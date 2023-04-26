@@ -165,7 +165,7 @@
                 <div class="p-2 flex-grow-1 bd-highlight">
                     <h1 class="h3 mb-2 text-gray-800" style="float: left; position: relative;">계정목록</h1>
                 </div>
-                <div class="mr-3"><i class="fa-solid fa-square-plus"></i></div>
+                <div class="mr-3"><i class="fa-solid fa-square-plus" data-bs-toggle="modal" data-bs-target="#informationModal"></i></div>
             </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -239,10 +239,8 @@
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
         </div>
         <!--검색어 입력창-->
-        <div class="card-body"
-             style="margin: 0; !important;">
-            <div id="search" class="col-md-4 input-group"
-                 style="float:right; padding-bottom: 0; !important;">
+        <div class="card-body">
+            <div id="search" class="col-md-4 input-group">
                 <input type="text" class="form-control"
                        placeholder="검색어를 입력해주세요(ID, 이름)"
                        aria-label="Search" aria-describedby="basic-addon2"
@@ -302,7 +300,7 @@
 <!-- End of Main Content -->
 <!--유저정보테이블 끝-->
 <!--유저정보 모달 시작-->
-<div class="modal" tabindex="-1" id="informationModal" data-bs-backdrop="static">
+<div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-body">
