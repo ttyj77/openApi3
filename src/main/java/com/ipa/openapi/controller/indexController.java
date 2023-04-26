@@ -44,24 +44,38 @@ public class indexController {
         return "modalTest";
     }
 
+    @GetMapping("/statistics-Daily")
+    public String statistics_Daily() {
+        return "statistics-Daily";
+    }
+
+    @GetMapping("/statistics-7Day")
+    public String statistics_7Day() {
+        return "statistics-7Day";
+    }
+
     @GetMapping("accountList")
-    public String accountList(){
+    public String accountList() {
         return "accountList";
     }
+
     @GetMapping("requestPage")
-    public String Authorization(){
+    public String Authorization() {
         return "requestPage";
     }
+
     @GetMapping("authorization")
-    public String authorization(){
+    public String authorization() {
         return "authorization";
     }
+
     @GetMapping("mydataServiceControl")
-    public String mydataServiceControl(){
+    public String mydataServiceControl() {
         return "mydataServiceControl";
     }
+
     @GetMapping("/mydataToken")
-    public String mydataToken(){
+    public String mydataToken() {
         return "mydataToken";
     }
 }
