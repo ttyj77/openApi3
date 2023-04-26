@@ -22,5 +22,8 @@ public class apiController {
         return "/apis/trash";
     }
 
-
+    @GetMapping("/resourceModal")
+    public String resourceModal() {
+        return "/apis/resourceModal";
+    }
 }

@@ -14,41 +14,24 @@ window.onload = function () {
     })
 
 
-// 보기 selectBox select 될 때마다 버튼 change
-// default selected 값
-    var pickBtn = document.getElementById('pick');
-    pickBtn.innerHTML = plusIcon + selectNowName + addContext;
-
-
 }
-
+// 보기 selectBox select 될 때마다 버튼 change
 // **** 외부 function 호출 zone ****
-function selectChange() {
-    let resource = "resource";
-    let tag = "tag";
-    let select = document.getElementById('show');
-    selectNowName = select.options[select.selectedIndex].text;
-    let selectNowValue = select.options[select.selectedIndex].value;
-    let resourceBtn = $(document.createElement("button")).addClass("btn btn-secondary").attr({
-        "id":"resourceBtn",
-        "data-bs-toggle": "modal",
-        "data-bs-target": "#resourceModal"
-    }).text(plusIcon + selectNowName + addContext);
-    let tagBtn = $(document.createElement("button")).addClass("btn btn-secondary").attr({
-        "id":"tagBtn",
-        "data-bs-toggle": "modal",
-        "data-bs-target": "#tagModal"
-    }).text(plusIcon + selectNowName + addContext);
+function selectChange(value) {
 
-    var pickBtn = document.getElementById('pick');
+    let choose = value.options[value.selectedIndex].value
+    console.log(choose)
+    if (choose == 'tag') {
+        selectNowName = "태크"
+        $('#pick').text(plusIcon + selectNowName + addContext)
+        $('#pick').attr('data-target', '#tagModal');
 
-    if (selectNowValue == resource) {
-        $('#target').append(resourceBtn);
-        $('#resourceBtn').click();
-    } else if (selectNowValue == tag) {
-        $('#target').append(tagBtn);
-        $('#tagBtn').click();
+    } else if (choose = 'resource') {
+        selectNowName = "리소스"
+        $('#pick').text(plusIcon + selectNowName + addContext)
+        $('#pick').attr('data-target', '#resourceModal');
     }
+
 }
 
 function addTag() {
