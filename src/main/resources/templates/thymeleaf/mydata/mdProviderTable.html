@@ -75,6 +75,7 @@
                                        style="width: 220px; text-align: center;">
                                 <input class="btn btn-primary p-1" type="submit" value="오늘"
                                        style="  margin-bottom: 4px; height: 31px;">
+                                <button class="btn btn-primary">조회</button>
                             </div>
                             <div class="col-md-3 input-group m-3">
                                 <input type="text" class="form-control"
@@ -109,7 +110,7 @@
                                     </thead>
 
                                     <tbody>
-                                    <tr data-toggle="modal" data-target="#exampleModal">
+                                    <tr data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <td>2021-11-23</td>
                                         <td>15:18:16.614</td>
                                         <td>2021-11-23 15:18:16.642</td>
@@ -126,37 +127,35 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
                 <!-- Button trigger modal -->
 
                 <!-- details info Modal start -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  data-bs-backdrop="static"
-                     aria-labelledby="exampleModalLabel" data-bs-keyboard="false"
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content" style="width: 800px;
-    height: 800px;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">정보제공 API 거래이력</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body" id="modalDark" style="overflow-y: scroll;overflow-x: hidden">
-                                <h3 class="mb-1">
+                                <h5 class="mb-1">
                                     기본 정보
-                                </h3>
+                                </h5>
                                 <table class="table table-bordered align-middle"
                                        style="width: -webkit-fill-available; font-size: 15px">
                                     <tbody>
                                     <tr>
                                         <td class="tdHead">전송요구SEQ</td>
                                         <td class="tdContent">TRQ_20211123094515_1725
-                                            <button class="badge badge-dark" id="beDark" data-toggle="modal"
+                                            <button class="badge badge-dark" id="beDark" data-bs-toggle="modal"
                                                     style="cursor: pointer;"
-                                                    data-target="#requestModal">전송요구정보
+                                                    data-bs-target="#requestModal">전송요구정보
                                             </button>
                                         </td>
 
@@ -172,7 +171,7 @@
                                     <tr>
                                         <td class="tdHead" style="vertical-align: middle">요청헤더</td>
                                         <td class="tdContent"><textarea
-                                                style="height: 200px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>
+                                                style="height: 150px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -182,14 +181,14 @@
                                     <tr>
                                         <td class="tdHead" style="vertical-align: middle">응답데이터</td>
                                         <td class="tdContent"><textarea
-                                                style="height: 200px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>
+                                                style="height: 150px; width: -webkit-fill-available;">{Host=mydata.kyobo.com:9443, authorization=Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJaVkFBRVMwMDAwIiwianRpIjoiMTA1NSIsImlzcyI6Im15ZGF0YS5reW9iby5jb20iLCJzdWIiOiJCZExEdk9uM2dsSWhTY3FNQTJ1eXpHQlFvTE9wbmVBUCIsInNjb3BlIjoiaW5zdS5saXN0IGluc3UuaW5zdXJhbmNlIiwiZXhwIjoxNjY5MTgzNjE0LCJpYXQiOjE2Mzc2NDc2MTR9.BM3p5FEfEafY19XfLd7c7T_Vzf75QpodhPznY7BfeVsza9NSqDDJBVmdkUX9iGgQcwgBgDjzeKeq1Heb8iy2I2uH453l4BH6gCrtlWJizF5U9q6Bzg0994UeaAlqDQhLMD5FZE2zT8CquRRivyjlgwlcLvl9GeswBhJydrmzCh2C1kHg_H8Y5GuWDbfL7AKi5ozk0stvW_9FxotP24l_pd_sUwFdUcy_V3L9Jt9lQ14unJmrBsTdRAwqMfQ3dRLkQ_i43B-tDb436HKlvB3viuq01QjbyKn9chShc-RLIsrzBojS_R28T3h8N6u0oe5CSLNIaHIsaAf5NtjghEs40w, Cache-Control=no-cache, client_id=BdLDvOn3glIhScqMA2uyzGBQoLOpneAP, domain=https://mydata.kyobo.com:9443, guid=20211123MYS202011518160000007200, iss=B1AAAI0000, Timestamp=2021-11-23 15:18:16.016, TUID=, user-agent=Apache-HttpClient/4.5.2 (Java/1.8.0_251), x-api-tran-id=ZVAAES0000M15EHSGEHH3GDA2, x-api-type=user-refresh, x-user-ci=qe7eDnXCzhW9EVxn11wAgWL+cdvzJi2lGT75yZtr8XpBY0LyMYw2hc8k2ELhRrFa2JisP56NKzkLe50crKjC9g==, Content-Type=application/json, X-SSL-CLIENT-S=CN=mdapigw.hanabank.com,O=KEB Hana Bank,L=Jung-gu,ST=Seoul,C=KR,serialNumber=110111-0672538,jurisdictionST=Seoul,jurisdictionC=KR,businessCategory=Private Organization, X-Forwarded-For=10.41.81.158, X-Forwarded-Host=mydata.kyobo.com:9443, X-Forwarded-Server=mydata.kyobo.com, Content-Length=74, Connection=Keep-Alive}</textarea>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                             </div>
                         </div>
                     </div>
@@ -198,11 +197,11 @@
                 <div class="modal fade" id="requestModal" tabindex="-1" role="dialog"
                      aria-labelledby="requestModalLabel"
                      aria-hidden="true">
-                    <div class="modal-dialog " role="document">
-                        <div class="modal-content" style="width: 800px;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="requestModalLabel">전송요구내역</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" aria-label="Close" data-bs-target="#exampleModal" data-bs-toggle="modal">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -217,7 +216,6 @@
                                         <td class="tdHead">기관코드</td>
                                         <td colspan="3" class="tdContent">ZVAABG0000
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td class="tdHead">기관명</td>
@@ -225,17 +223,14 @@
                                         <td class="tdHead">서비스명</td>
                                         <td class="tdContent">NH마이데이터서비스</td>
                                     </tr>
-
                                     <tr>
                                         <td class="tdHead">전송요구타입</td>
                                         <td colspan="3" class="tdContent">자산목록
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td class="tdHead">통합고객번호</td>
                                         <td colspan="3" class="tdContent">5730791447</td>
-
                                     </tr>
                                     <tr>
                                         <td class="tdHead">전송주기</td>
@@ -245,7 +240,6 @@
                                         <td class="tdContent">마이데이터
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td class="tdHead">전송준비일</td>
                                         <td class="tdContent">2021-11-23
@@ -254,7 +248,6 @@
                                         <td class="tdContent"> 2021-11-26
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td class="tdHead">토큰유효기간</td>
                                         <td class="tdContent">2021-12-21
@@ -267,8 +260,7 @@
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"  data-dismiss="modal">닫기</button>
-                                <!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                                <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#exampleModal">닫기</button>
                             </div>
                         </div>
                     </div>

@@ -287,7 +287,7 @@ h6 {
 }
 
 .accordion-flush .accordion-button {
-    padding: 16px 20px;
+    /*padding: 15px 0;*/
     background: none;
     border: 0;
 }
@@ -601,7 +601,7 @@ h6 {
 
     left: 0;
     bottom: 0;
-    /*width: 300px;*/
+    width: 300px;
     z-index: 996;
     transition: all 0.3s;
     /*padding: 20px;*/
@@ -610,7 +610,7 @@ h6 {
     scrollbar-color: #aab7cf transparent;
     box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
     background-color: #fff;
-    /*max-width: 12rem !important;*/
+    max-width: 12rem !important;
 }
 
 @media (max-width: 1199px) {

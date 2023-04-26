@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class indexController {
+public class IndexController {
 
     @GetMapping("")
     public String index() {
@@ -29,53 +29,23 @@ public class indexController {
         return "main page";
     }
 
-    @GetMapping("/providerTable")
-    public String providerTable() {
-        return "mdProviderTable";
-    }
-
-    @GetMapping("/agencyTable")
-    public String mdServiceTable() {
-        return "mdAgencyTable";
-    }
 
     @GetMapping("/modal")
     public String modal() {
         return "modalTest";
     }
 
-    @GetMapping("/statistics-Daily")
-    public String statistics_Daily() {
-        return "statistics-Daily";
-    }
-
-    @GetMapping("/statistics-7Day")
-    public String statistics_7Day() {
-        return "statistics-7Day";
-    }
-
     @GetMapping("accountList")
     public String accountList() {
         return "accountList";
     }
-
     @GetMapping("requestPage")
     public String Authorization() {
         return "requestPage";
     }
-
     @GetMapping("authorization")
     public String authorization() {
         return "authorization";
     }
 
-    @GetMapping("mydataServiceControl")
-    public String mydataServiceControl() {
-        return "mydataServiceControl";
-    }
-
-    @GetMapping("/mydataToken")
-    public String mydataToken() {
-        return "mydataToken";
-    }
 }
