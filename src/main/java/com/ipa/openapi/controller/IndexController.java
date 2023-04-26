@@ -38,12 +38,10 @@ public class IndexController {
     public String accountList() {
         return "accountList";
     }
-
     @GetMapping("requestPage")
     public String Authorization() {
         return "requestPage";
     }
-
     @GetMapping("authorization")
     public String authorization() {
         return "authorization";
