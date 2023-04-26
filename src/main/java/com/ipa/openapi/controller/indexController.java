@@ -13,9 +13,6 @@ public class indexController {
         return "index";
     }
 
-
-
-
     @GetMapping("/headSideBar")
     public String apisTest() {
         return "/fragment/headSideBar";
@@ -35,17 +32,13 @@ public class indexController {
 
     @GetMapping("/providerTable")
     public String providerTable() {
-
         return "mdProviderTable";
     }
 
-
     @GetMapping("/agencyTable")
     public String mdServiceTable() {
-
         return "mdAgencyTable";
     }
-
 
     @GetMapping("/modal")
     public String modal() {
@@ -68,7 +61,7 @@ public class indexController {
     public String mydataServiceControl(){
         return "mydataServiceControl";
     }
-    @GetMapping("mydataToken")
+    @GetMapping("/mydataToken")
     public String mydataToken(){
         return "mydataToken";
     }
