@@ -34,6 +34,11 @@ public class indexController {
         return "mdProviderTable";
     }
 
+    @GetMapping("/CollectorTable")
+    public String collectorTable() {
+        return "mdCollectorTable";
+    }
+
     @GetMapping("/agencyTable")
     public String mdServiceTable() {
         return "mdAgencyTable";

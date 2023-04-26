@@ -9019,7 +9019,7 @@ a:focus {
     display: flex;
 }
 #wrapper #content-wrapper {
-    /*background-color: #f8f9fc;*/
+    background-color: #f8f9fc;
     width: 100%;
     overflow-x: hidden;
 }
@@ -9607,7 +9607,7 @@ a:focus {
 }
 @media (min-width: 768px) {
     .sidebar {
-        width: 100% !important;
+        width: 14rem !important;
     }
     .sidebar .nav-item .collapse {
         position: relative;
