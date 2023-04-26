@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
+      layout:decorate="~{layout/layout}" lang="">
 
 <head>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -11,14 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
     <th:block layout:fragment="css">
 
-        <link
-                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-                rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-              crossorigin="anonymous">
     </th:block>
     <th:block layout:fragment="script">
         <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
@@ -92,195 +92,163 @@
             }
         </script>
     </th:block>
+    <title>MydataServiceControl</title>
 </head>
-
+<!--마이데이터 서비스 목록 메인페이지 시작 -->
 <body>
-<div layout:fragment="content">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-            <!--메인화면(계정목록)-->
-
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                </div>
-                <!--검색어 입력창-->
-                <div class="card-body">
-                    <div id="search" class="col-md-4 input-group"
-                         style="margin-top: 5px; font-size: 10px; margin-right: -9px">
-                        <input type="text" class="form-control"
-                               placeholder="검색어를 입력해주세요(클라이언트 ID, 서비스명, 기관명, 기관코드)"
-                               aria-label="Search" aria-describedby="basic-addon2"><br>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" style=" margin-top: 5px; height: 38px;">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+<div layout:fragment="content" style="position:static">
+    <div id="wrapper" style="white-space: nowrap">
+        <!-- Page Wrapper -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">마이데이터 서비스 목록</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        </div>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">마이데이터 서비스</h6>
+            </div>
+            <!--마이데이터 서비스 목록 검색바 -->
+            <div class="card-body" id="body-table">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row justify-content-end">
+                            <div class="col-sm-12 col-md-6">
+                                <div id="search" class="col-md-auto input-group"
+                                     style="font-size: 10px; padding: 0; !important;">
+                                    <input type="text" class="form-control"
+                                           placeholder="검색어를 입력해주세요(클라이언트 ID, 서비스명, 기관명, 기관코드)"
+                                           aria-label="Search" aria-describedby="basic-addon2"><br>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button"
+                                                style=" height: 38px;">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--마이데이터 서비스 목록 검색바 -->
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--검색어 입력창-->
-                <!--유저정보테이블 시작-->
-                <div class="card-body">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
-                           onmouseenter="changeColor()">
-                        <colgroup>
-                            <col class="">
-                            <col class="">
-                            <col class="">
-                            <col class="">
-                        </colgroup>
-                        <thead class="v-data-table-header">
-                        <tr>
-                            <th>클라이언트 ID</th>
-                            <th>서비스명</th>
-                            <th>기관명</th>
-                            <th>기관코드</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="white" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE</td>
-                            <td class="text-start">123456789012345678901234567890</td>
-                            <td class="text-start">이재근 테스트2</td>
-                            <td class="text-start">A1AARX0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">ghnObBaMMTZXLICpVybIwBgwdbkbUWCvnREIXEqrBNB</td>
-                            <td class="text-start">01AAE서비스</td>
-                            <td class="text-start">[252]라이나생명</td>
-                            <td class="text-start">B1AAAY0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">abuJUVHMfLGrjPmkPzBMxNZSvB</td>
-                            <td class="text-start">01AAE서비스</td>
-                            <td class="text-start">[269]IBK연금보험</td>
-                            <td class="text-start">B1AABD0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">KkBwyrOQqlUlBPceuxinvCokgOuxzWDyVvYcuctOmWAFRaX</td>
-                            <td class="text-start">02AAB서비스</td>
-                            <td class="text-start">[587]메이슨캐피탈(주)</td>
-                            <td class="text-start">D3AAHK0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">NkCzyWRslAhUxsnGbIPTutOxZhSJia</td>
-                            <td class="text-start">1111</td>
-                            <td class="text-start">테스트기관011</td>
-                            <td class="text-start">TEST000011</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">OAajctncmztsudAmRIZclqGmrdmyUBZWcRg</td>
-                            <td class="text-start">서비스(테스트용)</td>
-                            <td class="text-start">키움증권</td>
-                            <td class="text-start">ZVAABR0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">FUyyVcfgbyUNcnrDniJI</td>
-                            <td class="text-start">기업은행 테스트</td>
-                            <td class="text-start">중소기업은행</td>
-                            <td class="text-start">ZVAAEQ0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">yTGYvaNYtCOectRcfnsviayDzGIEHthUqBSdvlZPikFvUmqW</td>
-                            <td class="text-start">기업은행 테스트</td>
-                            <td class="text-start">중소기업은행</td>
-                            <td class="text-start">ZVAAEQ0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">TuWKredErVvPYiGgyJKYtTx</td>
-                            <td class="text-start">하나은행서비스</td>
-                            <td class="text-start">주식회사 하나은행</td>
-                            <td class="text-start">ZVAAES0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">JfDXNtobMDMhejWauGaGeNlqpqyOY</td>
-                            <td class="text-start">네이버 테스트</td>
-                            <td class="text-start">네이버파이낸셜(주)</td>
-                            <td class="text-start">ZVAAHY0000</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <!--마이데이터 서비스 목록 시작 -->
+                    <div class="row">
+                        <div class="col-sm-12"
+                             style="padding-top: 10px;">
+                            <div class="card-body" style="padding: 0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+                                       onmouseenter="changeColor()">
+                                    <thead class="v-data-table-header">
+                                    <tr>
+                                        <th>클라이언트 ID</th>
+                                        <th>서비스명</th>
+                                        <th>기관명</th>
+                                        <th>기관코드</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="white" data-bs-toggle="modal"
+                                        data-bs-target="#mydataServiceInfoModal">
+                                        <td class="text-start">bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE
+                                        </td>
+                                        <td class="text-start">123456789012345678901234567890</td>
+                                        <td class="text-start">이재근 테스트2</td>
+                                        <td class="text-start">A1AARX0000</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--마이데이터 서비스 목록 끝 -->
+                    <!--페이지네이션-->
+                    <div class="row justify-content-end">
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                <ul class="pagination justify-content-end">
+                                    <li class="paginate_button page-item previous disabled"
+                                        id="dataTable_previous"><a
+                                            href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a href="#"
+                                                                                    aria-controls="dataTable"
+                                                                                    data-dt-idx="1" tabindex="0"
+                                                                                    class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="2" tabindex="0"
+                                                                              class="page-link">2</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="3" tabindex="0"
+                                                                              class="page-link">3</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="4" tabindex="0"
+                                                                              class="page-link">4</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="5" tabindex="0"
+                                                                              class="page-link">5</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="6" tabindex="0"
+                                                                              class="page-link">6</a></li>
+                                    <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
+                                                                                                      aria-controls="dataTable"
+                                                                                                      data-dt-idx="7"
+                                                                                                      tabindex="0"
+                                                                                                      class="page-link">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--페이지네이션-->
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- End of Main Content -->
-    <!--유저정보테이블 끝-->
-    <!--유저정보 모달 시작-->
-    <!--유저정보 모달 시작-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="card-body" style="font-size: 13px; white-space: nowrap">
-                        <table class="table table-bordered" id="basicInformation" width="100%" cellspacing="0">
+</div>
+</div>
+<!-- End of Main Content -->
+<!--서비스 상세 모달 시작-->
+<div class="modal fade" id="mydataServiceInfoModal" tabindex="-1" role="dialog"
+     aria-labelledby="mydataServiceInfoModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="card-body" style="font-size: 13px; white-space: nowrap">
+                    <table class="table table-bordered" id="basicInformation" width="100%"
+                           cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th class="tg-0pky" colspan="3">기본정보</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tg-0pky">클라이언트 ID</td>
+                            <td class="tg-0pky" colspan="2">
+                                bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0pky">서비스명</td>
+                            <td class="tg-0pky" colspan="2">123456789012345678901234567890</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <table class="table table-bordered" id="CallbackURL" width="100%"
+                               cellspacing="0">
                             <thead>
                             <tr>
-                                <th class="tg-0pky" colspan="3">기본정보</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="tg-0pky">클라이언트 ID</td>
-                                <td class="tg-0pky" colspan="2">bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE</td>
-                            </tr>
-                            <tr>
-                                <td class="tg-0pky">서비스명</td>
-                                <td class="tg-0pky" colspan="2">123456789012345678901234567890</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div>
-                            <table class="table table-bordered" id="CallbackURL" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th class="tg-0lax" colspan="4" rowspan="2">Callback URL</th>
-                                </tr>
-                                <tr>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="tg-0lax" id="callbackUrlTitle" rowspan="2">CallBack URL</td>
-                                    <td class="tg-0lax" colspan="3">1</td>
-                                </tr>
-                                <tr>
-                                    <td class="tg-0lax" colspan="3">2</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <table class="table table-bordered" id="URLScheme" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th class="tg-0lax" colspan="4" rowspan="2">앱 URL 스킴</th>
+                                <th class="tg-0lax" colspan="4" rowspan="2">Callback URL</th>
                             </tr>
                             <tr>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="tg-0lax" id="APIDomainTitle" rowspan="2">API 서버 도메인명</td>
+                                <td class="tg-0lax" id="callbackUrlTitle" rowspan="2">CallBack
+                                    URL
+                                </td>
                                 <td class="tg-0lax" colspan="3">1</td>
                             </tr>
                             <tr>
@@ -288,26 +256,43 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="modal-footer" style="justify-content: center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+                    </div>
+                    <table class="table table-bordered" id="URLScheme" width="100%"
+                           cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th class="tg-0lax" colspan="4" rowspan="2">앱 URL 스킴</th>
+                        </tr>
+                        <tr>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="tg-0lax" id="APIDomainTitle" rowspan="2">API 서버 도메인명</td>
+                            <td class="tg-0lax" colspan="3">1</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax" colspan="3">2</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal-footer" style="justify-content: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            닫기
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        <!--유저정보 모달 끝-->
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
+    <!--서비스 상세 모달 끝-->
+    <!-- End of Content Wrapper -->
 
 </div>
-<<<<<<<<< Temporary merge branch 1
-=========
 <!-- End of Page Wrapper -->
 
 
->>>>>>>>> Temporary merge branch 2
+<!-- End of Page Wrapper -->
 </body>
 
 </html>

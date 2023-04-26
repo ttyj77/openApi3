@@ -73,108 +73,155 @@
 <body>
 <div layout:fragment="content">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="white-space: nowrap">
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-            <!--메인 화면(계정목록)-->
+        <div class="container-fluid" style="padding:0; !important;">
+            <!--메인화면(요청목록)-->
             <!-- Page Heading -->
-            <div>
-                <div class="row" style="margin-bottom: 5px">
-                    <h1 class="h3 mb-2 text-gray-800" style="margin-left: 12px">요청목록</h1>
+
+            <!--            <div class="d-flex bd-highlight" style="position:relative">-->
+            <div style="display: flex">
+                <div class="p-2 flex-grow-1 bd-highlight">
+                    <h1 class="h3 mb-2 text-gray-800" style="float: left; position: relative;">요청 목록 관리</h1>
                 </div>
             </div>
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                </div>
-                <!--검색어 입력창-->
-                <div class="card-body">
-                    <div id="search" class="col-md-4 input-group"
-                         style="margin-top: 5px; font-size: 10px; margin-right: -9px">
-                        <input type="text" class="form-control"
-                               placeholder="검색어를 입력해주세요"
-                               aria-label="Search" aria-describedby="basic-addon2"><br>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button"
-                                    style=" margin-top: 5px; height: 38px;">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">요청 목록</h6>
+        </div>
+        <!--요청목록 검색바-->
+        <div class="card-body" id="body-table">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row justify-content-end">
+                        <div class="col-sm-12 col-md-6"
+                             style="padding-bottom: 5px;">
+                            <div id="search" class="col-md-auto input-group"
+                                 style="font-size: 10px; padding: 0; !important;">
+                                <input type="text" class="form-control"
+                                       placeholder="검색어를 입력해주세요(제목, 내용, 요청계정, 요청상태)"
+                                       aria-label="Search" aria-describedby="basic-addon2"><br>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" style="height: 38px;">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>요청</th>
+                                    <th>제목</th>
+                                    <th>내용</th>
+                                    <th>요청 계정</th>
+                                    <th>요청 상태</th>
+                                    <th>요청 날짜</th>
+                                    <th>응답 날짜</th>
+                                    <th>비고</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                </tfoot>
+                                <tbody>
+                                <tr>
+                                    <!--요청-->
+                                    <td id="requestNumber" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                        14
+                                    </td>
+                                    <!--제목-->
+                                    <td id="requestTitle" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                        리소스 권한
+                                        요청[앱 아이디: 19]
+                                    </td>
+                                    <!--내용-->
+                                    <td id="requestContents" data-bs-toggle="modal"
+                                        data-bs-target="#requestDetailModal"
+                                     style="table-layout: fixed; text-overflow: ellipsis">
+                                        앱 아이디: 109, 앱 이름: 123, 리소스: ,아이디:68, URI:/v1/invest/account
+                                    </td>
+                                    <!--요청 계정-->
+                                    <td id="requestAccount" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                        u1
+                                    </td>
+                                    <!--요청 상태-->
+                                    <td id="requestStatus" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                        승인
+                                    </td>
+                                    <!--요청 날짜-->
+                                    <td id="requestDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                        2023-04-18
+                                    </td>
+                                    <!--응답날짜-->
+                                    <td id="responseDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
+                                        2023-04-18
+                                    </td>
+                                    <!--비고(삭제)-->
+                                    <td id="requestDeletion">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             onclick="eraseWarning();"
+                                             class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                                        </svg>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                <ul class="pagination justify-content-end">
+                                    <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a
+                                            href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable"
+                                                                                    data-dt-idx="1" tabindex="0"
+                                                                                    class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="2" tabindex="0"
+                                                                              class="page-link">2</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="3" tabindex="0"
+                                                                              class="page-link">3</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="4" tabindex="0"
+                                                                              class="page-link">4</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="5" tabindex="0"
+                                                                              class="page-link">5</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="6" tabindex="0"
+                                                                              class="page-link">6</a></li>
+                                    <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
+                                                                                                      aria-controls="dataTable"
+                                                                                                      data-dt-idx="7"
+                                                                                                      tabindex="0"
+                                                                                                      class="page-link">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--검색어 입력창-->
-                <!--요청 정보 테이블 시작-->
-                <div class="card-body">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>요청</th>
-                            <th>제목</th>
-                            <th>내용</th>
-                            <th>요청 계정</th>
-                            <th>요청 상태</th>
-                            <th>요청 날짜</th>
-                            <th>응답 날짜</th>
-                            <th>비고</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        </tfoot>
-                        <tbody>
-                        <tr>
-                            <!--요청-->
-                            <td id="requestNumber" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                14
-                            </td>
-                            <!--제목-->
-                            <td id="requestTitle" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                리소스 권한
-                                요청[앱 아이디: 19]
-                            </td>
-                            <!--내용-->
-                            <td id="requestContents" data-bs-toggle="modal"
-                                data-bs-target="#requestDetailModal">
-                                앱 아이디: 109, 앱 이름: 123, 리소스: ,아이디:68, URI:/v1/invest/account
-                            </td>
-                            <!--요청 계정-->
-                            <td id="requestAccount" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                u1
-                            </td>
-                            <!--요청 상태-->
-                            <td id="requestStatus" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                승인
-                            </td>
-                            <!--요청 날짜-->
-                            <td id="requestDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                2023-04-18
-                            </td>
-                            <!--응답날짜-->
-                            <td id="responseDate" data-bs-toggle="modal" data-bs-target="#requestDetailModal">
-                                2023-04-18
-                            </td>
-                            <!--비고(삭제)-->
-                            <td id="requestDeletion">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                     fill="currentColor"
-                                     onclick="eraseWarning();"
-                                     class="bi bi-eraser-fill" viewBox="0 0 16 16">
-                                    <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
-                                </svg>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
+        <!--요청목록 검색바-->
     </div>
 </div>
 <!-- End of Main Content -->
 <!--요청정보 테이블 끝-->
-
-<!--요청정보 모달 시작-->
-<div class="modal" tabindex="-1" id="requestDetailModal">
+<!--요청 상세 모달-->
+<div class="modal fade" id="requestDetailModal" tabindex="-1" aria-labelledby="requestDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-body">
@@ -220,7 +267,7 @@
                             <th data-v-3b1040d2="">내용</th>
                             <td data-v-3b1040d2="" colspan="3">
                                 <div data-v-3b1040d2="" class="v-card v-card--flat v-sheet theme--light"
-                                     style="min-height: 100px;"> 앱 아이디 : 109
+                                     style="max-width: 80px; font-size: small"> 앱 아이디 : 109
                                     앱 이름 : 123
                                     리소스 :
                                     아이디: 68, URI:/v1/invest/accounts
@@ -238,12 +285,10 @@
                 </div>
             </div>
         </div>
-        <!--유저정보 모달 끝-->
+        <!--요청상세 모달 끝-->
     </div>
     <!-- End of Content Wrapper -->
 </div>
 <!-- End of Page Wrapper -->
-
-</div>
 </body>
 </html>

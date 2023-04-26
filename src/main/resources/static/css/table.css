@@ -138,7 +138,11 @@ td tr th{
     vertical-align: middle;
 }
 #search {
-    float: right;
+    padding:10px;
+}
+
+#row-flex{
+    justify-content: flex-end;
 }
 
 
@@ -159,6 +163,32 @@ td tr th{
     float: right;
 }
 
+div {
+    display: block;
+}
+
 .changeColor {
     background-color: lightgrey;
+}
+
+#dataTable_searchFilter.form-control{
+    width: 50%
+}
+
+.container{
+    justify-content: flex-end;
+}
+
+.flex-container.flex-end{
+    justify-content: flex-end;
+}
+
+#authTable{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.card-body{
+    padding-right:0;
+    !important;
 }

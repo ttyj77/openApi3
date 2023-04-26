@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}" lang="ko">
+      layout:decorate="~{layout/layout}" lang="">
 
 <head>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -14,21 +14,23 @@
 
     <title>accountList</title>
     <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/table.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <th:block layout:fragment="css">
-        <!--        <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
 
-        <link
-                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-                rel="stylesheet">
-        <link rel="stylesheet" href="/static/css/table.css">
-        <!-- Custom styles for this template -->
-        <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
-        <!-- Custom styles for this page -->
-        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     </th:block>
     <th:block layout:fragment="script">
-        <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
+
         <!-- Bootstrap core JavaScript-->
         <script src="/vendor/jquery/jquery.min.js"></script>
         <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -41,7 +43,6 @@
 
 
         <!-- Page level custom scripts -->
-        </body>
         <script>
             function changeConfirm() {
                 let name = document.getElementById("nameInput");
@@ -146,8 +147,6 @@
             }
         </script>
     </th:block>
-
-
 </head>
 
 <body>
@@ -165,10 +164,11 @@
                 <div class="p-2 flex-grow-1 bd-highlight">
                     <h1 class="h3 mb-2 text-gray-800" style="float: left; position: relative;">계정목록</h1>
                 </div>
-                <div class="mr-3"><i class="fa-solid fa-square-plus" data-bs-toggle="modal" data-bs-target="#informationModal"></i></div>
+                <div class="mr-3"><i class="fa-solid fa-square-plus"></i></div>
             </div>
+
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="informInputModal" tabindex="-1" aria-labelledby="informationInputModal"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -236,162 +236,208 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">유저 목록</h6>
         </div>
-        <!--검색어 입력창-->
-        <div class="card-body">
-            <div id="search" class="col-md-4 input-group">
-                <input type="text" class="form-control"
-                       placeholder="검색어를 입력해주세요(ID, 이름)"
-                       aria-label="Search" aria-describedby="basic-addon2"
-                       style="float:right; margin: 0; !important;">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                    </button>
+        <div class="card-body" id="body-table">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row justify-content-end">
+                        <div class="col-sm-12 col-md-6">
+                            <div id="search" class="col-md-auto input-group"
+                                 style="font-size: 10px; padding: 0; !important;">
+                                <input type="text" class="form-control"
+                                       placeholder="검색어를 입력해주세요(클라이언트 ID, 서비스명, 기관명, 기관코드)"
+                                       aria-label="Search" aria-describedby="basic-addon2"><br>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" style=" margin-top: 5px; height: 38px;">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable"
+                                   role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Name: activate to sort column descending" style="width: 161px;">id
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                        aria-label="Position: activate to sort column ascending" style="width: 248px;">
+                                        이름
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                        aria-label="Office: activate to sort column ascending" style="width: 115px;">
+                                        활성화
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                        aria-label="Start date: activate to sort column ascending"
+                                        style="width: 108px;">비고
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr onclick="modalLoading()">
+                                    <td id="tableid" data-bs-toggle="modal" data-bs-target="#informationModal">yonghun
+                                    </td>
+                                    <td id="tablename" data-bs-toggle="modal" data-bs-target="#informationModal">최용훈
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" id="deactivate" onclick="deactivate();">비활성화
+                                        </button>
+                                        <button class="btn btn-primary" id="activate" onclick="activate();">활성화
+                                        </button>
+                                    </td>
+                                    <!--삭제 활동 시작-->
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             onclick="eraseWarning();"
+                                             class="bi bi-eraser-fill" viewBox="0 0 16 16">
+                                            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                                        </svg>
+                                    </td>
+                                    <!--삭제 활동 끝-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a
+                                            href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable"
+                                                                                    data-dt-idx="1" tabindex="0"
+                                                                                    class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="2" tabindex="0"
+                                                                              class="page-link">2</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="3" tabindex="0"
+                                                                              class="page-link">3</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="4" tabindex="0"
+                                                                              class="page-link">4</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="5" tabindex="0"
+                                                                              class="page-link">5</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                              data-dt-idx="6" tabindex="0"
+                                                                              class="page-link">6</a></li>
+                                    <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
+                                                                                                      aria-controls="dataTable"
+                                                                                                      data-dt-idx="7"
+                                                                                                      tabindex="0"
+                                                                                                      class="page-link">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!--검색어 입력창-->
-            <!--유저정보테이블 시작-->
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable"
-                       onmouseenter="changeColor()" style="white-space: nowrap">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>이름</th>
-                        <th>활성화</th>
-                        <th>비고</th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    </tfoot>
-                    <tbody>
-                    <tr onclick="modalLoading()">
-                        <td id="tableid" data-bs-toggle="modal" data-bs-target="#informationModal">yonghun
-                        </td>
-                        <td id="tablename" data-bs-toggle="modal" data-bs-target="#informationModal">최용훈
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" id="deactivate" onclick="deactivate();">비활성화
-                            </button>
-                            <button class="btn btn-primary" id="activate" onclick="activate();">활성화
-                            </button>
-                        </td>
-                        <!--삭제 활동 시작-->
-                        <td>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                 fill="currentColor"
-                                 onclick="eraseWarning();"
-                                 class="bi bi-eraser-fill" viewBox="0 0 16 16">
-                                <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
-                            </svg>
-                        </td>
-                        <!--삭제 활동 끝-->
-                    </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
-</div>
-<!-- /.container-fluid -->
-</div>
-<!-- End of Main Content -->
-<!--유저정보테이블 끝-->
-<!--유저정보 모달 시작-->
-<div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="card-body"
-                     style="font-size: 13px; white-space: nowrap; padding:0; !important;">
-                    <table class="table table-bordered" id="informationTable"
-                           style="white-space: nowrap; position: static">
-                        <thead>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th class="tg-0lax">아이디</th>
-                            <td class="tg-0lax" colspan="2" id="idSpace">
-                                <label for="idSpaceText">
-                                    <input class="form-control bg-light border-0 small" id="idSpaceText"
-                                           value="yonghun" disabled>
-                                </label>
-                            </td>
-                            <th class="tg-0lax">이름</th>
-                            <td class="tg-0lax" colspan="2" id="nameSpace">
-                                <label for="nameSpaceText">
-                                    <input class="form-control bg-light border-0 small" id="nameSpaceText"
-                                           value="최용훈" disabled>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="tg-0lax">전화번호</th>
-                            <td class="tg-0lax" colspan="5" id="phoneNumberSpace">
-                                <label for="phoneNumberSpaceText">
-                                    <input class="form-control bg-light border-0 small"
-                                           id="phoneNumberSpaceText"
-                                           value="010-1234-5678" disabled>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="tg-0lax">이메일</th>
-                            <td class="tg-0lax" colspan="5" id="emailSpace">
-                                <label for="emailSpaceText">
-                                    <input class="form-control bg-light border-0 small" id="emailSpaceText"
-                                           value="yoonghun@inzent.com" disabled>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="tg-0lax">역할</th>
-                            <td class="tg-0lax" colspan="5">
-                                <button type="button" class="btn btn-primary rounded-pill">일반 사용자</button>
-                                <button type="button" class="btn btn-primary rounded-pill">마이데이터 사업자
-                                </button>
-                                <button type="button" class="btn btn-primary rounded-pill">운영자</button>
-                                <button type="button" class="btn btn-primary rounded-pill">API 제공자</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="tg-0lax">활성화 상태</th>
-                            <td class="tg-0lax" colspan="5" id="currentActivation">
-                                <div class="form-check">
+    <!--유저정보테이블 끝-->
+    <!--유저정보 모달 시작-->
+    <div class="modal" tabindex="-1" id="informationModal" data-bs-backdrop="static" aria-labelledby="informationModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="card-body"
+                         style="font-size: 13px; white-space: nowrap; padding:0; !important;">
+                        <table class="table table-bordered" id="informationTable"
+                               style="white-space: nowrap; position: static">
+
+                            <tbody>
+                            <tr>
+                                <th class="tg-0lax">아이디</th>
+                                <td class="tg-0lax" colspan="2" id="idSpace">
+                                    <label for="idSpaceText">
+                                        <input class="form-control bg-light border-0 small" id="idSpaceText"
+                                               value="yonghun" disabled>
+                                    </label>
+                                </td>
+                                <th class="tg-0lax">이름</th>
+                                <td class="tg-0lax" colspan="2" id="nameSpace">
+                                    <label for="nameSpaceText">
+                                        <input class="form-control bg-light border-0 small" id="nameSpaceText"
+                                               value="최용훈" disabled>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="tg-0lax">전화번호</th>
+                                <td class="tg-0lax" colspan="5" id="phoneNumberSpace">
+                                    <label for="phoneNumberSpaceText">
+                                        <input class="form-control bg-light border-0 small"
+                                               id="phoneNumberSpaceText"
+                                               value="010-1234-5678" disabled>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="tg-0lax">이메일</th>
+                                <td class="tg-0lax" colspan="5" id="emailSpace">
+                                    <label for="emailSpaceText">
+                                        <input class="form-control bg-light border-0 small" id="emailSpaceText"
+                                               value="yoonghun@inzent.com" disabled>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="tg-0lax">역할</th>
+                                <td class="tg-0lax" colspan="5">
+                                    <button type="button" class="btn btn-primary rounded-pill">일반 사용자</button>
+                                    <button type="button" class="btn btn-primary rounded-pill">마이데이터 사업자
+                                    </button>
+                                    <button type="button" class="btn btn-primary rounded-pill">운영자</button>
+                                    <button type="button" class="btn btn-primary rounded-pill">API 제공자</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="tg-0lax">활성화 상태</th>
+                                <td class="tg-0lax" colspan="5" id="currentActivation">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="activateCheck"
-                                               id="activateCheck" checked disabled>
-                                        <label class="form-check-label" for="activate" disabled>
-                                            활성화
-                                        </label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="activateCheck"
+                                                   id="activateCheck" checked disabled>
+                                            <label class="form-check-label" for="activate" disabled>
+                                                활성화
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">비밀번호 변경</td>
-                            <td class="tg-0lax" colspan="5">
-                                <button class="btn btn-primary" id="passwordChange" disabled>비밀번호 변경
-                                </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div id="userInfobutton">
-                        <button class="btn btn-primary" onclick="correction();" id="correctionButton">수정
-                        </button>
-                        <button class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0lax">비밀번호 변경</td>
+                                <td class="tg-0lax" colspan="5">
+                                    <button class="btn btn-primary" id="passwordChange" disabled>비밀번호 변경
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div id="userInfobutton">
+                            <button class="btn btn-primary" onclick="correction();" id="correctionButton">수정
+                            </button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 <!--유저정보 모달 끝-->
-</div>
 <!-- End of Content Wrapper -->
 
 </body>
