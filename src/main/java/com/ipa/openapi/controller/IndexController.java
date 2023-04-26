@@ -29,6 +29,7 @@ public class IndexController {
         return "main page";
     }
 
+
     @GetMapping("/modal")
     public String modal() {
         return "modalTest";
