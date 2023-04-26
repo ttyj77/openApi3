@@ -20,7 +20,7 @@
     }
   </style>
 
-  <title>거래이력(제공자)</title>
+  <title>거래이력(사업자)</title>
 
   <th:block layout:fragment="css">
     <link
@@ -62,7 +62,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">정보제공 API 거래이력</h1>
+          <h1 class="h3 mb-2 text-gray-800">사업자 API 거래이력</h1>
           <p class="mb-4"></p>
 
           <!-- DataTales Example -->
@@ -75,6 +75,7 @@
                        style="width: 220px; text-align: center;">
                 <input class="btn btn-primary p-1" type="submit" value="오늘"
                        style="  margin-bottom: 4px; height: 31px;">
+                <button class="btn btn-primary">조회</button>
               </div>
               <div class="col-md-3 input-group m-3">
                 <input type="text" class="form-control"
@@ -97,50 +98,47 @@
                     <td>요청일</td>
                     <td>요청시간</td>
                     <td>응답일자</td>
-                    <td>응답시간(sec)</td>
+                    <td>응답시간(ms)</td>
                     <td>응답코드</td>
                     <td>API코드</td>
-                    <td>통합고객번호</td>
                     <td>정기적 전송</td>
+                    <td>타겟호스트</td>
                     <td>거래고유번호</td>
-                    <td>전송요구타입</td>
-
                   </tr>
                   </thead>
 
                   <tbody>
-                  <tr data-toggle="modal" data-target="#exampleModal">
+                  <tr data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <td>2021-11-23</td>
                     <td>15:18:16.614</td>
                     <td>2021-11-23 15:18:16.642</td>
-                    <td>00.280</td>
+                    <td>000.280</td>
                     <td>00000</td>
                     <td>IS08</td>
-                    <td>9077805756</td>
                     <td>user-refresh</td>
+                    <td>https://developers.mydatakorea.org:9443</td>
                     <td>QMBFCK67NULBGK72D1YE1MMYB</td>
-                    <td>마이데이터</td>
+                    <td></td>
                   </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
         <!-- Button trigger modal -->
 
         <!-- details info Modal start -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  data-bs-backdrop="static"
-             aria-labelledby="exampleModalLabel" data-bs-keyboard="false"
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
              aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content" style="width: 800px;
     height: 800px;">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">정보제공 API 거래이력</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -154,9 +152,9 @@
                   <tr>
                     <td class="tdHead">전송요구SEQ</td>
                     <td class="tdContent">TRQ_20211123094515_1725
-                      <button class="badge badge-dark" id="beDark" data-toggle="modal"
+                      <button class="badge badge-dark" id="beDark" data-bs-toggle="modal"
                               style="cursor: pointer;"
-                              data-target="#requestModal">전송요구정보
+                              data-bs-target="#requestModal">전송요구정보
                       </button>
                     </td>
 
@@ -189,7 +187,7 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
               </div>
             </div>
           </div>
@@ -202,7 +200,7 @@
             <div class="modal-content" style="width: 800px;">
               <div class="modal-header">
                 <h5 class="modal-title" id="requestModalLabel">전송요구내역</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" aria-label="Close" data-bs-target="#exampleModal" data-bs-toggle="modal">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -267,8 +265,7 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"  data-dismiss="modal">닫기</button>
-                <!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#exampleModal">닫기</button>
               </div>
             </div>
           </div>
