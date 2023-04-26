@@ -20,9 +20,8 @@ public class indexController {
 
     @GetMapping("/test")
     public String test() {
-        return "test";
+        return "tables";
     }
-
 
     @GetMapping("/main")
     @ResponseBody
