@@ -124,7 +124,7 @@
 
 
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 0 !important;">
         <!--메인화면(계정목록)-->
         <!-- Page Heading -->
         <div class="row" style="margin-bottom: 5px">
@@ -187,12 +187,12 @@
             <!--검색어 입력창-->
             <div class="card-body">
                 <div id="search" class="col-md-4 input-group"
-                     style="margin-top: 5px; font-size: 10px; margin-right: -9px">
+                style = "float:right; margin: 0; !important;">
                     <input type="text" class="form-control"
-                           placeholder="검색어를 입력해주세요"
+                           placeholder="검색어를 입력해주세요(ID, 이름)"
                            aria-label="Search" aria-describedby="basic-addon2"><br>
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" style=" margin-top: 5px; height: 38px;">
+                        <button class="btn btn-primary" type="button">
                             <i class="fas fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -393,7 +393,5 @@
     </div>
 </div>
 
-</div>
-</div>
 </body>
 </html>
