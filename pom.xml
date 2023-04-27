@@ -11,6 +11,7 @@
     <groupId>com.ipa</groupId>
     <artifactId>openAPI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>openAPI</name>
     <description>openAPI</description>
     <properties>
