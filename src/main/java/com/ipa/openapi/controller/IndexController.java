@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class IndexController {
 
-    @GetMapping("")
+    @GetMapping("/main")
     public String index() {
 //        @AuthenticationPrincipal UserCustomDetails details   로그인 된 사용자 정보 가져옴
-        return "index";
+        return "main";
     }
 
     @GetMapping("/headSideBar")
@@ -20,15 +20,8 @@ public class IndexController {
 
     @GetMapping("/test")
     public String test() {
-        return "tables";
+        return "test";
     }
-
-    @GetMapping("/main")
-    @ResponseBody
-    public String main() {
-        return "main page";
-    }
-
 
     @GetMapping("/modal")
     public String modal() {
