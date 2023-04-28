@@ -11,16 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <title>Service</title>
     <th:block layout:fragment="css">
-
+        <!-- Custom fonts for this template -->
         <link
                 href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
                 rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous">
+
     </th:block>
     <th:block layout:fragment="script">
+
         <script src="https://kit.fontawesome.com/24311b556d.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -31,283 +34,178 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
-        <script>
-            function deleteFunction() {
-                let deleteButton = document.getElementById("deleteConfirmbutton");
-                deleteButton.onClick = swal({
-                    title: "탈퇴처리 되었습니다",
-                    icon: 'warning'
-                });
-            }
-
-            function activate() {
-                let activity1 = document.getElementById("deactivate1");
-                if (activity1.onclick) {
-                    activity1.style.background = "#0d6efd";
-                    activity1.textContent = "활성화"
-                }
-            }
-
-            function deactivate() {
-                let activity2 = document.getElementById("activate1");
-                if (activity2.onclick) {
-                    activity2.style.background = "#e23137";
-                    activity2.textContent = "비활성화"
-                }
-            }
-
-            function changeColor() {
-                $('#dataTable tbody tr').mouseover(function () {
-                    $(this).addClass('changeColor');
-                }).mouseout(function () {
-                    $(this).removeClass('changeColor');
-                });
-            }
-
-            function eraseWarning() {
-                swal({
-                    title: "삭제하시겠습니까?",
-                    text: "이 작업은 되돌릴수 없습니다!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            swal("삭제되었습니다.", {
-                                icon: "success",
-                            });
-                        } else {
-                            swal("취소되었습니다.");
-                        }
-                    });
-            }
-
-            function correction() {
-                $('#activate').attr("disabled", false);
-                $('#deactivate').attr("disabled", false);
-                $('#passwordChange').attr("disabled", false);
-
-                $('#correctionButton').textContent = "저장";
-            }
-        </script>
     </th:block>
+    <style>
+        .tdContent:hover {
+            background-color: #f5f6fb;
+        }
+
+        .tdHead {
+            background-color: #f5f5f5;
+            width: 25%;
+        }
+
+        .trContent {
+            vertical-align: middle;
+        !important;
+        }
+    </style>
+
 </head>
 
 <body>
+
+<!-- Page Wrapper -->
 <div layout:fragment="content">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-            <!--메인화면(계정목록)-->
-
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                </div>
-                <!--검색어 입력창-->
-                <div class="card-body">
-                    <div id="search" class="col-md-4 input-group"
-                         style="margin-top: 5px; font-size: 10px; margin-right: -9px">
-                        <input type="text" class="form-control"
-                               placeholder="검색어를 입력해주세요(클라이언트 ID, 서비스명, 기관명, 기관코드)"
-                               aria-label="Search" aria-describedby="basic-addon2"><br>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" style=" margin-top: 5px; height: 38px;">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!--검색어 입력창-->
-                <!--유저정보테이블 시작-->
-                <div class="card-body">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
-                           onmouseenter="changeColor()">
-                        <colgroup>
-                            <col class="">
-                            <col class="">
-                            <col class="">
-                            <col class="">
-                        </colgroup>
-                        <thead class="v-data-table-header">
-                        <tr>
-                            <th>클라이언트 ID</th>
-                            <th>서비스명</th>
-                            <th>기관명</th>
-                            <th>기관코드</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="white" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE</td>
-                            <td class="text-start">123456789012345678901234567890</td>
-                            <td class="text-start">이재근 테스트2</td>
-                            <td class="text-start">A1AARX0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">ghnObBaMMTZXLICpVybIwBgwdbkbUWCvnREIXEqrBNB</td>
-                            <td class="text-start">01AAE서비스</td>
-                            <td class="text-start">[252]라이나생명</td>
-                            <td class="text-start">B1AAAY0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">abuJUVHMfLGrjPmkPzBMxNZSvB</td>
-                            <td class="text-start">01AAE서비스</td>
-                            <td class="text-start">[269]IBK연금보험</td>
-                            <td class="text-start">B1AABD0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">KkBwyrOQqlUlBPceuxinvCokgOuxzWDyVvYcuctOmWAFRaX</td>
-                            <td class="text-start">02AAB서비스</td>
-                            <td class="text-start">[587]메이슨캐피탈(주)</td>
-                            <td class="text-start">D3AAHK0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">NkCzyWRslAhUxsnGbIPTutOxZhSJia</td>
-                            <td class="text-start">1111</td>
-                            <td class="text-start">테스트기관011</td>
-                            <td class="text-start">TEST000011</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">OAajctncmztsudAmRIZclqGmrdmyUBZWcRg</td>
-                            <td class="text-start">서비스(테스트용)</td>
-                            <td class="text-start">키움증권</td>
-                            <td class="text-start">ZVAABR0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">FUyyVcfgbyUNcnrDniJI</td>
-                            <td class="text-start">기업은행 테스트</td>
-                            <td class="text-start">중소기업은행</td>
-                            <td class="text-start">ZVAAEQ0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">yTGYvaNYtCOectRcfnsviayDzGIEHthUqBSdvlZPikFvUmqW</td>
-                            <td class="text-start">기업은행 테스트</td>
-                            <td class="text-start">중소기업은행</td>
-                            <td class="text-start">ZVAAEQ0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">TuWKredErVvPYiGgyJKYtTx</td>
-                            <td class="text-start">하나은행서비스</td>
-                            <td class="text-start">주식회사 하나은행</td>
-                            <td class="text-start">ZVAAES0000</td>
-                        </tr>
-                        <tr class="" data-bs-toggle="modal" data-bs-target="#serviceInformationModal">
-                            <td class="text-start">JfDXNtobMDMhejWauGaGeNlqpqyOY</td>
-                            <td class="text-start">네이버 테스트</td>
-                            <td class="text-start">네이버파이낸셜(주)</td>
-                            <td class="text-start">ZVAAHY0000</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+    <!-- Begin Page Content -->
+    <div class="container-fluid mr-4">
+        <!--메인화면(계정목록)-->
+        <!-- Page Heading -->
+        <div class="wrapper" style="margin-bottom: 5px">
+            <h1 class="h3 mb-2 text-gray-800" style="margin-left: 12px">마이데이터 서비스목록</h1>
         </div>
-    </div>
-
-    <!-- End of Main Content -->
-    <!--유저정보테이블 끝-->
-    <!--유저정보 모달 시작-->
-    <!--유저정보 모달 시작-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="card-body" style="font-size: 13px; white-space: nowrap">
-                        <table class="table table-bordered" id="basicInformation" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th class="tg-0pky" colspan="3">기본정보</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="tg-0pky">클라이언트 ID</td>
-                                <td class="tg-0pky" colspan="2">bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE</td>
-                            </tr>
-                            <tr>
-                                <td class="tg-0pky">서비스명</td>
-                                <td class="tg-0pky" colspan="2">123456789012345678901234567890</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div>
-                            <table class="table table-bordered" id="CallbackURL" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th class="tg-0lax" colspan="4" rowspan="2">Callback URL</th>
-                                </tr>
-                                <tr>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="tg-0lax" id="callbackUrlTitle" rowspan="2">CallBack URL</td>
-                                    <td class="tg-0lax" colspan="3">1</td>
-                                </tr>
-                                <tr>
-                                    <td class="tg-0lax" colspan="3">2</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <table class="table table-bordered" id="URLScheme" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th class="tg-0lax" colspan="4" rowspan="2">앱 URL 스킴</th>
-                            </tr>
-                            <tr>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="tg-0lax" id="APIDomainTitle" rowspan="2">API 서버 도메인명</td>
-                                <td class="tg-0lax" colspan="3">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tg-0lax" colspan="3">2</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="modal-footer" style="justify-content: center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+        <div class="card shadow mb-4">
+            <!--검색어 입력창-->
+            <div class="card-body">
+                <div id="search" class="col-md-4 input-group"
+                     style="float:right; margin: 0; !important;">
+                    <input type="text" class="form-control"
+                           placeholder="검색어를 입력해주세요(ID, 이름)"
+                           aria-label="Search" aria-describedby="basic-addon2"><br>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--유저정보 모달 끝-->
-        <!-- End of Content Wrapper -->
+            <!--검색어 입력창-->
+            <!--유저정보테이블 시작-->
+            <div class="card-body">
+                <table class="table table-hover" id="dataTable"
+                       style="text-align: center; font-size: 15px">
+                    <thead>
+                    <tr style="font-weight: bold; background-color: #f5f6fb;">
+                        <th>클라이언트 ID</th>
+                        <th>서비스명</th>
+                        <th>기관명</th>
+                        <th>기관코드</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="trContent" data-bs-toggle="modal" data-bs-target="#serviceInfoModal">
+                        <td>bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE</td>
+                        <td>123456789012345678901234567890</td>
+                        <td>이재근 테스트2</td>
+                        <td>A1AARX0000</td>
+                    </tr>
+                    <tr class="trContent" data-bs-toggle="modal" data-bs-target="#serviceInfoModal">
+                        <td>ghnObBaMMTZXLICpVybIwBgwdbkbUWCvnREIXEqrBNB</td>
+                        <td>01AAE서비스</td>
+                        <td>[252]라이나생명</td>
+                        <td>B1AAAY0000</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- 서비스 모달 -->
+                <div class="modal fade" id="serviceInfoModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>마이데이터 서비스 정보</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="w-100 p-2">
+                                    <div class="border mb-3">
+                                        <div class="border-bottom">
+                                            <h5 class="text-muted p-3 m-0">기본 정보</h5>
+                                        </div>
+                                        <div class="p-4">
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="tdHead">
+                                                        클라이언트 ID
+                                                    </td>
+                                                    <td class="tdContent">
+                                                        bTvAZaWWfyLfmzzKliMieYhNTFynYvIfJhZwZDcQiglRE
+                                                    </td>
+                                                </tr>
+                                                <tr style="border-top: 1px solid #dee2e6">
+                                                    <td class="tdHead">
+                                                        서비스명
+                                                    </td>
+                                                    <td class="tdContent">
+                                                        123456789012345678901234567890
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="border mb-3">
+                                        <div class="border-bottom">
+                                            <h5 class="text-muted p-3 m-0">Callback URL</h5>
+                                        </div>
+                                        <div class="p-4">
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                <tr>
+                                                    <!-- rowspan 에 callback URL 갯수 들어가야 함-->
+                                                    <td class="tdHead" rowspan="2" style="vertical-align: middle">
+                                                        callback URL
+                                                    </td>
 
+                                                    <td class="tdContent">
+                                                        https://www.yu.kr/
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tdContent">
+                                                        https://ian.kr/
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="border mb-3">
+                                        <div class="border-bottom">
+                                            <h5 class="text-muted p-3 m-0">앱 URL 스킴</h5>
+                                        </div>
+                                        <div class="p-4">
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="tdHead">
+                                                        API서버 도메인명
+                                                    </td>
+                                                    <td class="tdContent">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        닫기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 서비스 모달 끝 -->
+            </div>
+        </div>
     </div>
-    <!-- End of Page Wrapper -->
+</div>
 
 </div>
-<<<<<<<<< Temporary merge branch 1
-=========
-<!-- End of Page Wrapper -->
-
-
->>>>>>>>> Temporary merge branch 2
+</div>
 </body>
-
 </html>

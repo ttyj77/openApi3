@@ -34,4 +34,9 @@ public class UserController {
         userService.register(userDTO);
         return "redirect:/";
     }
+
+    @GetMapping("/mypage")
+    public String mypage() {
+        return "mypage";
+    }
 }

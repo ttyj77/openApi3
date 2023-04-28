@@ -47,7 +47,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .requestMatchers("/", "/error/*", "/login.html", "/login_proc", "/user/login", "/user/register","/main").permitAll() // 설정된 url은 인증되지 않더라도 누구든 접근 가능
+                .requestMatchers("/", "/error/*", "/login.html", "/login_proc", "/user/login", "/user/register","/main", "/user/mypage").permitAll() // 설정된 url은 인증되지 않더라도 누구든 접근 가능
 //                .anyRequest().authenticated()// 위 페이지 외 인증이 되어야 접근가능(ROLE에 상관없이)
 //                .requestMatchers("/main").hasRole("ADMIN")
                 .and()
